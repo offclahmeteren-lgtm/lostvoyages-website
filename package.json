@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "agent-browser": "github:vercel-labs/agent-browser",
+    "framer-motion": "^12.38.0"
+  }
+}

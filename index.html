@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lost Voyages — Beklemekten Sıkılmadın mı?</title>
+  <meta name="description" content="Butik, küçük grup gezileri. Rusya, Bali, Japonya, Fas ve daha fazlası. 7 yıllık tecrübeyle Lost Voyages."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">Lost Voyages</a>
+  <div class="nav-links">
+    <a href="#turlar">Turlar</a>
+    <a href="#galeri">Galeri</a>
+    <a href="#yorumlar">Yorumlar</a>
+    <a href="#hakkinda">Hakkında</a>
+    <a href="#iletisim" class="nav-cta">Rezervasyon</a>
+  </div>
+  <button class="nav-burger" id="burger">☰</button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="#turlar" onclick="closeMobile()">Turlar</a>
+  <a href="#galeri" onclick="closeMobile()">Galeri</a>
+  <a href="#yorumlar" onclick="closeMobile()">Yorumlar</a>
+  <a href="#hakkinda" onclick="closeMobile()">Hakkında</a>
+  <a href="#nasil" onclick="closeMobile()">Nasıl Çalışır?</a>
+  <a href="#iletisim" onclick="closeMobile()" class="mobile-cta">Rezervasyon</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <img src="images/balkanlar-hero.jpg" alt="Karadağ" class="hero-img">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-label">7 Yıllık Tecrübe · Küçük Grup · Butik Gezi</p>
+    <h1 class="hero-title">Beklemekten<br>Sıkılmadın mı?</h1>
+    <p class="hero-sub">Pasaportunu kap. Geri kalanını biz halledelim.</p>
+    <div class="hero-btns">
+      <a href="#turlar" class="btn-gold">Yaklaşan Turları Keşfet</a>
+      <a href="#nasil" class="btn-outline">Nasıl Çalışıyor?</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-n" data-target="7">0</span><span class="stat-l">Yıl Tecrübe</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><span class="stat-n" data-target="40">0</span><span class="stat-l">2026 Turu</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><span class="stat-n">~15</span><span class="stat-l">Kişilik Grup</span></div>
+    </div>
+  </div>
+  <a href="#turlar" class="hero-scroll">↓</a>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>🇷🇺 Rusya</span><span>🇱🇰 Sri Lanka</span><span>🇯🇵 Japonya</span><span>🇲🇦 Fas</span><span>🇮🇩 Bali</span><span>🇹🇿 Zanzibar</span><span>🇯🇴 Ürdün</span><span>🇹🇭 Tayland</span><span>🇻🇳 Vietnam</span><span>🇦🇿 Bakü</span><span>🇧🇦 Balkanlar</span><span>✦ Kuzey Işıkları</span>
+    <span>🇷🇺 Rusya</span><span>🇱🇰 Sri Lanka</span><span>🇯🇵 Japonya</span><span>🇲🇦 Fas</span><span>🇮🇩 Bali</span><span>🇹🇿 Zanzibar</span><span>🇯🇴 Ürdün</span><span>🇹🇭 Tayland</span><span>🇻🇳 Vietnam</span><span>🇦🇿 Bakü</span><span>🇧🇦 Balkanlar</span><span>✦ Kuzey Işıkları</span>
+  </div>
+</div>
+
+<!-- TURLAR -->
+<section class="section" id="turlar">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="section-label">2026 Sezonu</p>
+      <h2 class="section-title">Sıradaki Durağın Hangisi?</h2>
+      <p class="section-sub">Her tur özenle hazırlanmış, her grup maksimum 20 kişi.</p>
+    </div>
+    <div class="tours-grid">
+
+      <a href="kuzey-isiklari.html" class="tour-card" style="--accent:#00c8a0; --img:url('/images/kuzey-hero.jpg')">
+        <div class="tour-img"></div>
+        <div class="tour-body">
+          <div class="tour-top">
+            <span class="tour-flag">🇷🇺</span>
+            <span class="tour-date">Aralık 2026 · Yılbaşı</span>
+          </div>
+          <h3 class="tour-name">Kuzey Işıkları</h3>
+          <p class="tour-cities">Moskova · Murmansk · Aurora Borealis</p>
+          <div class="tour-badges">
+            <span class="badge">7G/8G</span>
+            <span class="badge">Husky Kızağı</span>
+            <span class="badge">Sami Köyü</span>
+          </div>
+          <div class="tour-footer">
+            <span class="tour-price">€2.195<small>/kişi</small></span>
+            <span class="tour-link">İncele →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="sri-lanka.html" class="tour-card" style="--accent:#f4a261; --img:url('/images/srilanka-hero.jpg')">
+        <div class="tour-img"></div>
+        <div class="tour-body">
+          <div class="tour-top">
+            <span class="tour-flag">🇱🇰</span>
+            <span class="tour-date">Tem &amp; Ağu 2026</span>
+          </div>
+          <h3 class="tour-name">Sri Lanka</h3>
+          <p class="tour-cities">Colombo · Ella · Sigiriya · Galle</p>
+          <div class="tour-badges">
+            <span class="badge">7G/8G</span>
+            <span class="badge">Uçak Hariç</span>
+            <span class="badge">Safari</span>
+          </div>
+          <div class="tour-footer">
+            <span class="tour-price">€1.595<small>/kişi</small></span>
+            <span class="tour-link">İncele →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="rusya.html" class="tour-card" style="--accent:#e63946; --img:url('/images/rusya-hero.jpg')">
+        <div class="tour-img"></div>
+        <div class="tour-body">
+          <div class="tour-top">
+            <span class="tour-flag">🇷🇺</span>
+            <span class="tour-date">10–15 Temmuz 2026</span>
+          </div>
+          <h3 class="tour-name">Rusya Beyaz Geceler</h3>
+          <p class="tour-cities">Moskova · St. Petersburg</p>
+          <div class="tour-badges">
+            <span class="badge">4G/5G</span>
+            <span class="badge">Uçak Dahil</span>
+            <span class="badge">Sapsan Dahil</span>
+          </div>
+          <div class="tour-footer">
+            <span class="tour-price">€1.795<small>/kişi</small></span>
+            <span class="tour-link">İncele →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="javascript:void(0)" class="tour-card" style="--accent:#2abfbf; --img:url('/images/balkanlar-hero.jpg')">
+        <div class="tour-img"></div>
+        <div class="tour-body">
+          <div class="tour-top">
+            <span class="tour-flag">🇧🇦</span>
+            <span class="tour-date">25–28 Temmuz 2026</span>
+          </div>
+          <h3 class="tour-name">Balkanlar</h3>
+          <p class="tour-cities">Karadağ · Bosna · Makedonya</p>
+          <div class="tour-badges">
+            <span class="badge">3G/4G</span>
+            <span class="badge">Vizesiz</span>
+          </div>
+          <div class="tour-footer">
+            <span class="tour-price">Yakında</span>
+            <span class="tour-link tour-coming">Bildiri Al →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="javascript:void(0)" class="tour-card" style="--accent:#f0c133; --img:url('/images/baku-hero.jpg')">
+        <div class="tour-img"></div>
+        <div class="tour-body">
+          <div class="tour-top">
+            <span class="tour-flag">🇦🇿</span>
+            <span class="tour-date">1–5 Ağustos 2026</span>
+          </div>
+          <h3 class="tour-name">Bakü</h3>
+          <p class="tour-cities">İçerişehir · Yanardağ · Qobustan</p>
+          <div class="tour-badges">
+            <span class="badge">4G/5G</span>
+            <span class="badge">Vizesiz</span>
+          </div>
+          <div class="tour-footer">
+            <span class="tour-price">Yakında</span>
+            <span class="tour-link tour-coming">Bildiri Al →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="javascript:void(0)" class="tour-card" style="--accent:#4ecdc4; --img:url('/images/bali-hero.jpg')">
+        <div class="tour-img"></div>
+        <div class="tour-body">
+          <div class="tour-top">
+            <span class="tour-flag">🇮🇩</span>
+            <span class="tour-date">31 Ağu – 7 Eyl 2026</span>
+          </div>
+          <h3 class="tour-name">Bali</h3>
+          <p class="tour-cities">Ubud · Seminyak · Uluwatu</p>
+          <div class="tour-badges">
+            <span class="badge">6G/8G</span>
+            <span class="badge">Vizesiz</span>
+            <span class="badge">Resort</span>
+          </div>
+          <div class="tour-footer">
+            <span class="tour-price">Yakında</span>
+            <span class="tour-link tour-coming">Bildiri Al →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="javascript:void(0)" class="tour-card" style="--accent:#d4a017; --img:url('/images/urdun-hero.jpg')">
+        <div class="tour-img"></div>
+        <div class="tour-body">
+          <div class="tour-top">
+            <span class="tour-flag">🇯🇴</span>
+            <span class="tour-date">2–6 Ekim 2026</span>
+          </div>
+          <h3 class="tour-name">Ürdün</h3>
+          <p class="tour-cities">Petra · Wadi Rum · Ölüdeniz</p>
+          <div class="tour-badges">
+            <span class="badge">4G/5G</span>
+            <span class="badge">Vizesiz</span>
+          </div>
+          <div class="tour-footer">
+            <span class="tour-price">Yakında</span>
+            <span class="tour-link tour-coming">Bildiri Al →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="javascript:void(0)" class="tour-card" style="--accent:#e8a0bf; --img:url('/images/fas-hero.jpg')">
+        <div class="tour-img"></div>
+        <div class="tour-body">
+          <div class="tour-top">
+            <span class="tour-flag">🇲🇦</span>
+            <span class="tour-date">23–29 Ekim 2026</span>
+          </div>
+          <h3 class="tour-name">Fas</h3>
+          <p class="tour-cities">Marakeş · Sahara · Chefchaouen</p>
+          <div class="tour-badges">
+            <span class="badge">6G/7G</span>
+            <span class="badge">Vizesiz</span>
+            <span class="badge">Riad Otel</span>
+          </div>
+          <div class="tour-footer">
+            <span class="tour-price">Yakında</span>
+            <span class="tour-link tour-coming">Bildiri Al →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="javascript:void(0)" class="tour-card" style="--accent:#ff6b6b; --img:url('/images/japonya-hero.jpg')">
+        <div class="tour-img"></div>
+        <div class="tour-body">
+          <div class="tour-top">
+            <span class="tour-flag">🇯🇵</span>
+            <span class="tour-date">30 Eki – 7 Kas 2026</span>
+          </div>
+          <h3 class="tour-name">Japonya</h3>
+          <p class="tour-cities">Tokyo · Kyoto · Osaka</p>
+          <div class="tour-badges">
+            <span class="badge">8G/9G</span>
+            <span class="badge">Shinkansen</span>
+          </div>
+          <div class="tour-footer">
+            <span class="tour-price">Yakında</span>
+            <span class="tour-link tour-coming">Bildiri Al →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="javascript:void(0)" class="tour-card" style="--accent:#f7931e; --img:url('/images/tayland-hero.jpg')">
+        <div class="tour-img"></div>
+        <div class="tour-body">
+          <div class="tour-top">
+            <span class="tour-flag">🇹🇭</span>
+            <span class="tour-date">14–21 Kasım 2026</span>
+          </div>
+          <h3 class="tour-name">Tayland</h3>
+          <p class="tour-cities">Phuket · Phi Phi · James Bond</p>
+          <div class="tour-badges">
+            <span class="badge">7G/8G</span>
+            <span class="badge">Vizesiz</span>
+            <span class="badge">Resort</span>
+          </div>
+          <div class="tour-footer">
+            <span class="tour-price">Yakında</span>
+            <span class="tour-link tour-coming">Bildiri Al →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="javascript:void(0)" class="tour-card" style="--accent:#00b4d8; --img:url('/images/zanzibar-hero.jpg')">
+        <div class="tour-img"></div>
+        <div class="tour-body">
+          <div class="tour-top">
+            <span class="tour-flag">🇹🇿</span>
+            <span class="tour-date">5–11 Aralık 2026</span>
+          </div>
+          <h3 class="tour-name">Zanzibar</h3>
+          <p class="tour-cities">Stone Town · Safari Blue · Plajlar</p>
+          <div class="tour-badges">
+            <span class="badge">5G/7G</span>
+            <span class="badge">Her Şey Dahil</span>
+          </div>
+          <div class="tour-footer">
+            <span class="tour-price">Yakında</span>
+            <span class="tour-link tour-coming">Bildiri Al →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="javascript:void(0)" class="tour-card" style="--accent:#90e0ef; --img:url('/images/vietnam-hero.jpg')">
+        <div class="tour-img"></div>
+        <div class="tour-body">
+          <div class="tour-top">
+            <span class="tour-flag">🇻🇳</span>
+            <span class="tour-date">26 Ara – 1 Oca</span>
+          </div>
+          <h3 class="tour-name">Vietnam</h3>
+          <p class="tour-cities">Hanoi · Halong Bay · Ho Chi Minh</p>
+          <div class="tour-badges">
+            <span class="badge">6G/7G</span>
+            <span class="badge">Vizesiz</span>
+          </div>
+          <div class="tour-footer">
+            <span class="tour-price">Yakında</span>
+            <span class="tour-link tour-coming">Bildiri Al →</span>
+          </div>
+        </div>
+      </a>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- GALERİ -->
+<section class="section" id="galeri">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="section-label">Bizden Kareler</p>
+      <h2 class="section-title">Gerçek Gezginler, Gerçek Anılar</h2>
+      <p class="section-sub">Bunların hepsi bizim gruplarımızdan. Stok fotoğraf yok.</p>
+    </div>
+    <div class="photo-slider reveal">
+      <!-- Sıra 1: sola kayar -->
+      <div class="photo-slider-track fwd">
+        <div class="photo-slide"><img src="images/gallery/ki-aurora-erkek.jpg" alt="Kuzey Işıkları altında" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/ki-aurora-cift.jpg" alt="Kuzey Işıkları turu" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/ki-aurora-gol.jpg" alt="Aurora göl yansıması" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/ki-sami-grup.jpg" alt="Saami kıyafetleri" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/sl-fil-toren.jpg" alt="Sri Lanka fil töreni" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/sl-tren.jpg" alt="Sri Lanka çay tarlası tren" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/sl-9arch.jpg" alt="Nine Arch köprüsü" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/rusya-kizilmeydan.jpg" alt="Moskova Kızıl Meydan" loading="lazy"/></div>
+        <!-- kopya — sonsuz döngü için -->
+        <div class="photo-slide"><img src="images/gallery/ki-aurora-erkek.jpg" alt="Kuzey Işıkları altında" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/ki-aurora-cift.jpg" alt="Kuzey Işıkları turu" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/ki-aurora-gol.jpg" alt="Aurora göl yansıması" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/ki-sami-grup.jpg" alt="Saami kıyafetleri" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/sl-fil-toren.jpg" alt="Sri Lanka fil töreni" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/sl-tren.jpg" alt="Sri Lanka çay tarlası tren" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/sl-9arch.jpg" alt="Nine Arch köprüsü" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/rusya-kizilmeydan.jpg" alt="Moskova Kızıl Meydan" loading="lazy"/></div>
+      </div>
+      <!-- Sıra 2: sağa kayar -->
+      <div class="photo-slider-track rev">
+        <div class="photo-slide"><img src="images/gallery/ki-aurora-grup.jpg" alt="Kuzey Işıkları grubu" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/ki-husky-erkek.jpg" alt="Husky safari" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/buz-yuzme.jpg" alt="Buz yüzme" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/sl-infinity-pool.jpg" alt="Sri Lanka infinity pool" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/sl-palmiye.jpg" alt="Sri Lanka palmiye sahil" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/sl-safari-jeep.jpg" alt="Sri Lanka safari" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/sl-kaplumbaga.jpg" alt="Sri Lanka kaplumbağa" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/sl-sahil.jpg" alt="Sri Lanka sahil" loading="lazy"/></div>
+        <!-- kopya -->
+        <div class="photo-slide"><img src="images/gallery/ki-aurora-grup.jpg" alt="Kuzey Işıkları grubu" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/ki-husky-erkek.jpg" alt="Husky safari" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/buz-yuzme.jpg" alt="Buz yüzme" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/sl-infinity-pool.jpg" alt="Sri Lanka infinity pool" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/sl-palmiye.jpg" alt="Sri Lanka palmiye sahil" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/sl-safari-jeep.jpg" alt="Sri Lanka safari" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/sl-kaplumbaga.jpg" alt="Sri Lanka kaplumbağa" loading="lazy"/></div>
+        <div class="photo-slide"><img src="images/gallery/sl-sahil.jpg" alt="Sri Lanka sahil" loading="lazy"/></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-inner">
+      <span class="mq-item"><em>"</em>Ahmet Eren kuzey ışıklarının sefiridir!!!!<em>"</em> <strong>— mehmeturkmez5</strong></span>
+      <span class="mq-item"><em>"</em>Asla uyanmak istemediğim bir rüya gibiydi<em>"</em> <strong>— ezgiyilmaazz0</strong></span>
+      <span class="mq-item"><em>"</em>Etkisi hala devam eden bir gezi düşünün<em>"</em> <strong>— smyyeakoz</strong></span>
+      <span class="mq-item"><em>"</em>Bu masala şahit olmak inanılmaz bir deneyimdi<em>"</em> <strong>— diidemozcan</strong></span>
+      <span class="mq-item"><em>"</em>İnsan hayatında kaç kez böyle hisseder ki<em>"</em> <strong>— sahika.kocak</strong></span>
+      <span class="mq-item"><em>"</em>Seyahat değil bir rüya. Harika bir yol arkadaşıyla unutulmaz anılar<em>"</em> <strong>— tugbaoklvi</strong></span>
+      <span class="mq-item"><em>"</em>Bir daha gideceğim, tek sefer yetmiyor, bağımlılık yapıyor<em>"</em> <strong>— ayysegunay</strong></span>
+      <span class="mq-item"><em>"</em>Bu ekiple her yere giderim! Çok net! Harikayiz!<em>"</em> <strong>— hknshbz</strong></span>
+      <span class="mq-item"><em>"</em>Gözlerimle görmeyene kadar gerçekliğinden şüphem vardı<em>"</em> <strong>— burcintumer35</strong></span>
+      <span class="mq-item"><em>"</em>Sayende bu inanılmaz mucizeye şahit olduk<em>"</em> <strong>— elifcttin</strong></span>
+      <span class="mq-item"><em>"</em>Bu grup beraberken kahkahalar havada uçuşuyordu<em>"</em> <strong>— Necla Burçin G.</strong></span>
+      <span class="mq-item"><em>"</em>İyi ki geldin — teşekkürler @ahmeterenvci sana minnettarız<em>"</em> <strong>— ozlemturannnnn</strong></span>
+      <span class="mq-item"><em>"</em>Tek kelimeyle HARIKAYDIIIl ⭐⭐⭐<em>"</em> <strong>— shnnyarenn</strong></span>
+      <span class="mq-item"><em>"</em>Muhteşemdi<em>"</em> <strong>— ayseeser93</strong></span>
+      <span class="mq-item"><em>"</em>Turla gitmek istemeyip tek başına da cesaret edemeyenler için butik bir gezi harika oluyor<em>"</em> <strong>— mukadder_guney</strong></span>
+      <span class="mq-item"><em>"</em>Boğazım çok kötü uyurken mızmızlanıyordum ama muazzam bir an'a şahit olduk sayesinde<em>"</em> <strong>— mukadder_guney</strong></span>
+      <!-- Duplicate for seamless loop -->
+      <span class="mq-item"><em>"</em>Ahmet Eren kuzey ışıklarının sefiridir!!!!<em>"</em> <strong>— mehmeturkmez5</strong></span>
+      <span class="mq-item"><em>"</em>Asla uyanmak istemediğim bir rüya gibiydi<em>"</em> <strong>— ezgiyilmaazz0</strong></span>
+      <span class="mq-item"><em>"</em>Etkisi hala devam eden bir gezi düşünün<em>"</em> <strong>— smyyeakoz</strong></span>
+      <span class="mq-item"><em>"</em>Bu masala şahit olmak inanılmaz bir deneyimdi<em>"</em> <strong>— diidemozcan</strong></span>
+      <span class="mq-item"><em>"</em>İnsan hayatında kaç kez böyle hisseder ki<em>"</em> <strong>— sahika.kocak</strong></span>
+      <span class="mq-item"><em>"</em>Seyahat değil bir rüya. Harika bir yol arkadaşıyla unutulmaz anılar<em>"</em> <strong>— tugbaoklvi</strong></span>
+      <span class="mq-item"><em>"</em>Bir daha gideceğim, tek sefer yetmiyor, bağımlılık yapıyor<em>"</em> <strong>— ayysegunay</strong></span>
+      <span class="mq-item"><em>"</em>Bu ekiple her yere giderim! Çok net! Harikayiz!<em>"</em> <strong>— hknshbz</strong></span>
+      <span class="mq-item"><em>"</em>Gözlerimle görmeyene kadar gerçekliğinden şüphem vardı<em>"</em> <strong>— burcintumer35</strong></span>
+      <span class="mq-item"><em>"</em>Sayende bu inanılmaz mucizeye şahit olduk<em>"</em> <strong>— elifcttin</strong></span>
+      <span class="mq-item"><em>"</em>Bu grup beraberken kahkahalar havada uçuşuyordu<em>"</em> <strong>— Necla Burçin G.</strong></span>
+      <span class="mq-item"><em>"</em>İyi ki geldin — teşekkürler @ahmeterenvci sana minnettarız<em>"</em> <strong>— ozlemturannnnn</strong></span>
+      <span class="mq-item"><em>"</em>Tek kelimeyle HARIKAYDIIIl ⭐⭐⭐<em>"</em> <strong>— shnnyarenn</strong></span>
+      <span class="mq-item"><em>"</em>Muhteşemdi<em>"</em> <strong>— ayseeser93</strong></span>
+      <span class="mq-item"><em>"</em>Turla gitmek istemeyip tek başına da cesaret edemeyenler için butik bir gezi harika oluyor<em>"</em> <strong>— mukadder_guney</strong></span>
+      <span class="mq-item"><em>"</em>Boğazım çok kötü uyurken mızmızlanıyordum ama muazzam bir an'a şahit olduk sayesinde<em>"</em> <strong>— mukadder_guney</strong></span>
+    </div>
+  </div>
+</div>
+
+<!-- YORUMLAR -->
+<section class="section section-dark" id="yorumlar">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="section-label">Gerçek Geri Bildirimler</p>
+      <h2 class="section-title">Biz değil, onlar anlatsın</h2>
+      <p class="section-sub">Bize gelen mesajlardan, kelimesi kelimesine.</p>
+    </div>
+    <div class="testimonial-slider">
+      <div class="testimonial-slider-track">
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">İlk yurtdışı seyahatim olmasına rağmen hiç yabancılık çekmedim, aksine sanki yıllardır tanıdığım kişilerle seyahat etmişim gibi hissettim. Kuzey ışıkları harikaydı ama siz de bir başkasınız.</p><div class="t-author"><span class="t-name">Aybüke Kaya</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Sayende hayalimiz tahmin edemeyeceğimiz güzellikte gerçekleşti. O kadar eşsiz bir histi ki hala inanamıyorum. Sen bizim hayallerimizi gerçekleştirdin. Allah'ta senin güzel kalbinde ne varsa versin.</p><div class="t-author"><span class="t-name">Şahika Koçak</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">İşte bu benim hayallerimin vücut bulmuş halidir. Eren, Rabbim senin vasıtanla yaşattı bu hayalimi, ayağına taş değmesin, yolun hep açık olsun.</p><div class="t-author"><span class="t-name">Esra Bahçivanlar</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Ben ağlamamıştım, şimdi sayende ağladım. Herkesin birbirine olan uyumu, Eren'in müthiş programı ve her şeyi profesyonelce halletmesi gerçekten bize müthiş bir tatil yaşattı.</p><div class="t-author"><span class="t-name">Özlem Turan</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Dünyayı gezip görürken sadece yeni bir ülke değil, farklı insanlar ve yeni arkadaşlıklar kuruyoruz. İyi ki kesişmiş yollarımız. Teşekkürler bile az kalır, teşekkür ederim Eren.</p><div class="t-author"><span class="t-name">Burçin Tümer</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">İlham kaynağım oldun şimdi, çok daha güçlü ve sağlam planlarım var ve bu senin sayende. Bir hayat nasıl değişti ve değişecek gör bakalım. Her seyahatimde başka şeyler öğrendim ama bu yolculuğum köklü değişiklikler yapmam gerektiğini kamçıladı.</p><div class="t-author"><span class="t-name">Sümeyye Akoz</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Herşey için çok teşekkür ederim, iyiki ranıştık ve rehberlik ettiniz. Çok mutlu ayrılıyorum Murmansk'tan, sayenizde.</p><div class="t-author"><span class="t-name">Zeynep Dilek Kapcan</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">@ahmeterenvci galerim şu anda bu şekilde diye paylaşım yaptığında kuzey ışıkları ilk defa aklıma düşmüştü. Doğru zamanın olduğuna inanarak bu yolculuğa onunla çıkmaya karar verdim. İyi ki de onunla ve bu ekiple olmuş.</p><div class="t-author"><span class="t-name">Gazelle G.</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">-8°'de 3 saat bekleyip umudunu kaybetmek üzereyken bir anda bizi büyleyen müthiş bir doğa olayına tanık olmak. Emeklerin, enerjin için tüm alkışlar daima.</p><div class="t-author"><span class="t-name">_dyr.ddm_</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">İnsanları yolculukta daha iyi tanırsın. İyi ki tanışmışım dediğim insanlar; tekrar buluşmak dileğiyle.</p><div class="t-author"><span class="t-name">Buğra Azeri</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Ben yine butik kapalı turla geldim. Bölgeye o kadar hakimki daha ilk günden iyi ki dedirtti. Dün akşam o kadar güzel di ki otele dönünce nasıl uyuduğumu bile hatırlamıyorum.</p><div class="t-author"><span class="t-name">Şahika Koçak</span><span class="t-tour">Rusya Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Beni yine ağlama tuttu. Her şey o kadar güzel ki kendimi bir masalın ortasında buldum, hala hayal gibi. Bir daha gideceğim, tek sefer yetmiyor, bağımlılık yapıyor, haberiniz olsun.</p><div class="t-author"><span class="t-name">Ayşe Günay</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Her şey için çook teşekkürler. İyi ki seni tanışım, hayatın hep ışıklarla aydınlansın güzel kardeşim.</p><div class="t-author"><span class="t-name">Selma Yılmaz</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Turla gitmek istemeyip tek başına da cesaret edemeyenler için butik bir gezi harika oluyor. Çevremden gitmek isteyenler iletişime geçebilir.</p><div class="t-author"><span class="t-name">Mukadder Güney</span><span class="t-tour">Sri Lanka Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Boğazım çok kötü, uykum da geldi. Hala niye otele gitmedik diye uyurken mızmızlanıyordum ben. Bir ihtimal uğruna devam etmek istemiş rehberimiz. Ve muazzam bir an'a şahit olduk sayesinde @ahmeterenvci.</p><div class="t-author"><span class="t-name">Mukadder Güney</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Tek kelimeyle HARIKAYDIIIl ⭐⭐⭐</p><div class="t-author"><span class="t-name">Instagram Yorumu</span><span class="t-tour">Sri Lanka Turu</span></div></div></div>
+        <!-- kopya — sonsuz döngü -->
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">İlk yurtdışı seyahatim olmasına rağmen hiç yabancılık çekmedim, aksine sanki yıllardır tanıdığım kişilerle seyahat etmişim gibi hissettim. Kuzey ışıkları harikaydı ama siz de bir başkasınız.</p><div class="t-author"><span class="t-name">Aybüke Kaya</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Sayende hayalimiz tahmin edemeyeceğimiz güzellikte gerçekleşti. O kadar eşsiz bir histi ki hala inanamıyorum. Sen bizim hayallerimizi gerçekleştirdin. Allah'ta senin güzel kalbinde ne varsa versin.</p><div class="t-author"><span class="t-name">Şahika Koçak</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">İşte bu benim hayallerimin vücut bulmuş halidir. Eren, Rabbim senin vasıtanla yaşattı bu hayalimi, ayağına taş değmesin, yolun hep açık olsun.</p><div class="t-author"><span class="t-name">Esra Bahçivanlar</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Ben ağlamamıştım, şimdi sayende ağladım. Herkesin birbirine olan uyumu, Eren'in müthiş programı ve her şeyi profesyonelce halletmesi gerçekten bize müthiş bir tatil yaşattı.</p><div class="t-author"><span class="t-name">Özlem Turan</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Dünyayı gezip görürken sadece yeni bir ülke değil, farklı insanlar ve yeni arkadaşlıklar kuruyoruz. İyi ki kesişmiş yollarımız. Teşekkürler bile az kalır, teşekkür ederim Eren.</p><div class="t-author"><span class="t-name">Burçin Tümer</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">İlham kaynağım oldun şimdi, çok daha güçlü ve sağlam planlarım var ve bu senin sayende. Bir hayat nasıl değişti ve değişecek gör bakalım. Her seyahatimde başka şeyler öğrendim ama bu yolculuğum köklü değişiklikler yapmam gerektiğini kamçıladı.</p><div class="t-author"><span class="t-name">Sümeyye Akoz</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Herşey için çok teşekkür ederim, iyiki ranıştık ve rehberlik ettiniz. Çok mutlu ayrılıyorum Murmansk'tan, sayenizde.</p><div class="t-author"><span class="t-name">Zeynep Dilek Kapcan</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">@ahmeterenvci galerim şu anda bu şekilde diye paylaşım yaptığında kuzey ışıkları ilk defa aklıma düşmüştü. Doğru zamanın olduğuna inanarak bu yolculuğa onunla çıkmaya karar verdim. İyi ki de onunla ve bu ekiple olmuş.</p><div class="t-author"><span class="t-name">Gazelle G.</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">-8°'de 3 saat bekleyip umudunu kaybetmek üzereyken bir anda bizi büyleyen müthiş bir doğa olayına tanık olmak. Emeklerin, enerjin için tüm alkışlar daima.</p><div class="t-author"><span class="t-name">_dyr.ddm_</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">İnsanları yolculukta daha iyi tanırsın. İyi ki tanışmışım dediğim insanlar; tekrar buluşmak dileğiyle.</p><div class="t-author"><span class="t-name">Buğra Azeri</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Ben yine butik kapalı turla geldim. Bölgeye o kadar hakimki daha ilk günden iyi ki dedirtti. Dün akşam o kadar güzel di ki otele dönünce nasıl uyuduğumu bile hatırlamıyorum.</p><div class="t-author"><span class="t-name">Şahika Koçak</span><span class="t-tour">Rusya Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Beni yine ağlama tuttu. Her şey o kadar güzel ki kendimi bir masalın ortasında buldum, hala hayal gibi. Bir daha gideceğim, tek sefer yetmiyor, bağımlılık yapıyor, haberiniz olsun.</p><div class="t-author"><span class="t-name">Ayşe Günay</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Her şey için çook teşekkürler. İyi ki seni tanışım, hayatın hep ışıklarla aydınlansın güzel kardeşim.</p><div class="t-author"><span class="t-name">Selma Yılmaz</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Turla gitmek istemeyip tek başına da cesaret edemeyenler için butik bir gezi harika oluyor. Çevremden gitmek isteyenler iletişime geçebilir.</p><div class="t-author"><span class="t-name">Mukadder Güney</span><span class="t-tour">Sri Lanka Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Boğazım çok kötü, uykum da geldi. Hala niye otele gitmedik diye uyurken mızmızlanıyordum ben. Bir ihtimal uğruna devam etmek istemiş rehberimiz. Ve muazzam bir an'a şahit olduk sayesinde @ahmeterenvci.</p><div class="t-author"><span class="t-name">Mukadder Güney</span><span class="t-tour">Kuzey Işıkları Turu</span></div></div></div>
+        <div class="testimonial-slide"><div class="testimonial-card"><div class="t-quote">"</div><p class="t-text">Tek kelimeyle HARIKAYDIIIl ⭐⭐⭐</p><div class="t-author"><span class="t-name">Instagram Yorumu</span><span class="t-tour">Sri Lanka Turu</span></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HAKKINDA -->
+<section class="section section-dark" id="hakkinda">
+  <div class="container about-grid">
+    <div class="about-text reveal">
+      <p class="section-label">Neden Lost Voyages?</p>
+      <h2 class="section-title">Bu Gezi Klasik Bir Tur Değil</h2>
+      <p class="about-p">7 yıldır dünyayı gezen, binlerce kişiyle yolculuk eden biri olarak şunu biliyorum: en iyi geziler büyük kafilelerle yapılmaz. Tanımadığın kişilerle çıkıp ömürlük dostluklarla dönersin.</p>
+      <p class="about-p">Her grupta maksimum 20 kişi. Katılımcıların çoğu yalnız geliyor, ilk günden kaynaşıyor. Lüks ama ulaşılabilir. Esnek ama organize.</p>
+      <div class="about-features">
+        <div class="feat"><span class="feat-icon">✦</span><div><strong>Küçük Grup</strong><p>Maks. 20 kişi, asla kalabalık kafile</p></div></div>
+        <div class="feat"><span class="feat-icon">✦</span><div><strong>Tura Özel Rehber</strong><p>Her turda tur lideri ve yerel rehber</p></div></div>
+        <div class="feat"><span class="feat-icon">✦</span><div><strong>4 Yıldızlı Konaklama</strong><p>Lüks ama ulaşılabilir oteller</p></div></div>
+        <div class="feat"><span class="feat-icon">✦</span><div><strong>Ekstra Ücret Yok</strong><p>Dahil hizmetler için sürpriz yoktur</p></div></div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <div class="about-card">
+        <blockquote>"Yalnız geldim, en iyi arkadaşlarımla döndüm."</blockquote>
+        <p class="quote-attr">— Lost Voyages katılımcısı</p>
+      </div>
+      <div class="about-nums">
+        <div class="num-item"><span data-target="7">0</span><p>Yıllık tecrübe</p></div>
+        <div class="num-item"><span data-target="12" data-suffix="+">0</span><p>Ülke 2026'da</p></div>
+        <div class="num-item"><span data-target="124" data-suffix="K">0</span><p>Instagram takipçisi</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NASIL ÇALIŞIR -->
+<section class="section" id="nasil">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="section-label">Süreç</p>
+      <h2 class="section-title">Nasıl Çalışır?</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step"><span class="step-n">01</span><h4>Tur Seç</h4><p>İlgini çeken turu seç, bilgi paketini incele.</p></div>
+      <div class="step"><span class="step-n">02</span><h4>Kayıt Ol</h4><p>Formu doldur, ön ödeme ile yerini garantile.</p></div>
+      <div class="step"><span class="step-n">03</span><h4>WhatsApp Grubuna Katıl</h4><p>Vize, bilet, kıyafet — hepsini birlikte hallederiz.</p></div>
+      <div class="step"><span class="step-n">04</span><h4>Gez & Keşfet</h4><p>Yabancılarla çıkarsın, dostlarla dönersin.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- İLETİŞİM -->
+<section class="section section-dark" id="iletisim">
+  <div class="container contact-grid">
+    <div class="contact-text">
+      <p class="section-label">Rezervasyon</p>
+      <h2 class="section-title">Hazır mısın?</h2>
+      <p class="contact-sub">Soruların için veya rezervasyon için bize ulaş. WhatsApp en hızlı yol.</p>
+      <div class="contact-links">
+        <a href="https://wa.me/905451706927" class="contact-item" target="_blank">
+          <span class="contact-icon">💬</span>
+          <div><strong>WhatsApp</strong><p>Hızlı yanıt için</p></div>
+        </a>
+        <a href="https://instagram.com/ahmeterenvci" class="contact-item" target="_blank">
+          <span class="contact-icon">📸</span>
+          <div><strong>@ahmeterenvci</strong><p>Instagram'da takip et</p></div>
+        </a>
+        <a href="mailto:iletisim@lostvoyages.com" class="contact-item">
+          <span class="contact-icon">✉️</span>
+          <div><strong>iletisim@lostvoyages.com</strong><p>Email ile ulaş</p></div>
+        </a>
+      </div>
+    </div>
+    <div class="contact-form-wrap">
+      <form class="contact-form" netlify name="iletisim" method="POST">
+        <input type="hidden" name="form-name" value="iletisim"/>
+        <div class="form-group">
+          <input type="text" name="ad" placeholder="Adınız" required/>
+        </div>
+        <div class="form-group">
+          <input type="tel" name="telefon" placeholder="Telefon" required/>
+        </div>
+        <div class="form-group">
+          <select name="tur">
+            <option value="">Hangi tur ilgini çekiyor?</option>
+            <option>Kuzey Işıkları — Ara 2026 (€2.195)</option>
+            <option>Sri Lanka — 2026 (€2.395, uçak dahil)</option>
+            <option>Rusya Beyaz Geceler — Tem 2026</option>
+            <option>Balkanlar — Tem 2026</option>
+            <option>Bakü — Ağu 2026</option>
+            <option>Bali — Ağu/Eyl 2026</option>
+            <option>Ürdün — Eki 2026</option>
+            <option>Fas — Eki 2026</option>
+            <option>Japonya — Eki/Kas 2026</option>
+            <option>Tayland — Kas 2026</option>
+            <option>Zanzibar — Ara 2026</option>
+            <option>Vietnam — Ara 2026</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea name="mesaj" placeholder="Mesajınız (opsiyonel)" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn-gold btn-full">Gönder — Sizi Arayalım</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">Lost Voyages</a>
+      <p>Beklemekten Sıkılmadın mı?</p>
+    </div>
+    <div class="footer-nav">
+      <a href="#turlar">2026 Turları</a>
+      <a href="#hakkinda">Hakkında</a>
+      <a href="#nasil">Nasıl Çalışır?</a>
+      <a href="#iletisim">İletişim</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://instagram.com/ahmeterenvci" target="_blank" title="Instagram">📸</a>
+      <a href="https://wa.me/905451706927" target="_blank" title="WhatsApp">💬</a>
+      <a href="https://youtube.com/@lostvoyages" target="_blank" title="YouTube">▶️</a>
+      <a href="https://tiktok.com/@lostvoyages" target="_blank" title="TikTok">🎵</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Lost Voyages · iletisim@lostvoyages.com</p>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/905451706927?text=Merhaba%2C%20Lost%20Voyages%20turları%20hakkında%20bilgi%20almak%20istiyorum." class="wa-float" target="_blank" title="WhatsApp'tan Ulaş">
+  <svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- BİLDİRİ AL MODAL -->
+<div class="bildiri-overlay" id="bildiriOverlay">
+  <div class="bildiri-modal">
+    <button class="bildiri-close" id="bildiriClose">✕</button>
+    <div class="bildiri-header">
+      <p class="bildiri-icon">✈️</p>
+      <h3 class="bildiri-title">Tur Açıldığında Haber Al</h3>
+      <p class="bildiri-sub" id="bildiriTurAdi">Bu tur için kayıt açıldığında seni ilk biz arayalım.</p>
+    </div>
+    <form class="bildiri-form" netlify name="bildiri" method="POST" action="?bildiri=1">
+      <input type="hidden" name="form-name" value="bildiri"/>
+      <input type="hidden" name="tur" id="bildiriTurInput" value=""/>
+      <div class="bildiri-row">
+        <input type="text" name="ad" placeholder="Adın" required/>
+        <input type="tel" name="telefon" placeholder="Telefon numarası" required/>
+      </div>
+      <input type="email" name="email" placeholder="E-posta adresi" required/>
+      <button type="submit" class="bildiri-submit">Haber Ver 🔔</button>
+    </form>
+    <p class="bildiri-note">Spam yok. Sadece bu tur için tek mesaj.</p>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>document.fonts.ready.then(function(){document.documentElement.classList.add('fonts-ready');});</script>
+</body>
+</html>

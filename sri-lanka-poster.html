@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Sri Lanka — Lost Voyages</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1080px;
+    height: 1920px;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0a;
+  }
+
+  .poster {
+    width: 1080px;
+    height: 1920px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Background gradient layers */
+  .bg-base {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      160deg,
+      #0d1f0a 0%,
+      #1a2f10 15%,
+      #0f2818 30%,
+      #051510 50%,
+      #021008 70%,
+      #000a05 100%
+    );
+  }
+
+  /* Decorative circle glow - sun/moon */
+  .glow-top {
+    position: absolute;
+    top: -80px;
+    right: -60px;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,180,50,0.18) 0%, rgba(200,120,20,0.08) 40%, transparent 70%);
+  }
+
+  .glow-mid {
+    position: absolute;
+    top: 380px;
+    left: -100px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(30,160,80,0.12) 0%, transparent 60%);
+  }
+
+  /* Texture overlay */
+  .texture {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(255,200,80,0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(50,200,120,0.06) 0%, transparent 50%);
+  }
+
+  /* Top section */
+  .top-bar {
+    position: absolute;
+    top: 72px;
+    left: 72px;
+    right: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 22px;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+  }
+
+  .nights-badge {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 40px;
+    padding: 10px 24px;
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 1px;
+  }
+
+  /* Country label */
+  .country-label {
+    position: absolute;
+    top: 168px;
+    left: 72px;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 6px;
+    color: rgba(100,220,130,0.8);
+    text-transform: uppercase;
+  }
+
+  /* Main title */
+  .main-title {
+    position: absolute;
+    top: 210px;
+    left: 68px;
+    right: 68px;
+  }
+
+  .main-title h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 148px;
+    font-weight: 900;
+    line-height: 0.92;
+    color: #fff;
+    letter-spacing: -3px;
+  }
+
+  .main-title h1 .italic {
+    font-style: italic;
+    color: rgba(255,255,255,0.92);
+  }
+
+  /* Decorative divider line */
+  .divider {
+    position: absolute;
+    top: 620px;
+    left: 72px;
+    right: 72px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2) 30%, rgba(100,220,130,0.4) 60%, transparent);
+  }
+
+  /* Image frame - center showcase */
+  .image-frame {
+    position: absolute;
+    top: 648px;
+    left: 52px;
+    right: 52px;
+    height: 680px;
+    border-radius: 28px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .image-frame-inner {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      #1a4a20 0%,
+      #0d3318 20%,
+      #0a2810 40%,
+      #041a0a 60%,
+      #1a3a15 80%,
+      #0f2810 100%
+    );
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Decorative scene inside frame */
+  .scene {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  /* Mountains/hills silhouette */
+  .hills {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 280px;
+  }
+
+  .hill-1 {
+    position: absolute;
+    bottom: 0;
+    left: -40px;
+    width: 600px;
+    height: 320px;
+    background: radial-gradient(ellipse at 50% 100%, #0d2a0d 0%, #051505 60%, transparent 100%);
+    border-radius: 50% 50% 0 0 / 60% 60% 0 0;
+  }
+
+  .hill-2 {
+    position: absolute;
+    bottom: 0;
+    right: -60px;
+    width: 700px;
+    height: 280px;
+    background: radial-gradient(ellipse at 50% 100%, #0f300f 0%, #061806 60%, transparent 100%);
+    border-radius: 50% 50% 0 0 / 60% 60% 0 0;
+  }
+
+  .hill-3 {
+    position: absolute;
+    bottom: 0;
+    left: 200px;
+    width: 700px;
+    height: 240px;
+    background: radial-gradient(ellipse at 50% 100%, #1a3f1a 0%, #0a1f0a 70%, transparent 100%);
+    border-radius: 50% 50% 0 0 / 60% 60% 0 0;
+  }
+
+  /* Train track */
+  .train-track {
+    position: absolute;
+    bottom: 95px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: rgba(255,255,255,0.15);
+  }
+
+  .train-track::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+  }
+
+  /* Train */
+  .train {
+    position: absolute;
+    bottom: 99px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 3px;
+    align-items: flex-end;
+  }
+
+  .train-car {
+    width: 90px;
+    height: 44px;
+    background: linear-gradient(180deg, #c84020 0%, #a02810 100%);
+    border-radius: 6px 6px 3px 3px;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .train-car::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 8px;
+    right: 8px;
+    height: 14px;
+    background: rgba(255,220,150,0.25);
+    border-radius: 3px;
+  }
+
+  .train-engine {
+    width: 110px;
+    height: 52px;
+    background: linear-gradient(180deg, #d04828 0%, #983020 100%);
+    border-radius: 8px 16px 3px 3px;
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+  }
+
+  .train-engine::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 20px;
+    height: 16px;
+    background: rgba(255,220,150,0.3);
+    border-radius: 3px;
+  }
+
+  /* Steam puffs */
+  .steam {
+    position: absolute;
+    bottom: 158px;
+    left: 50%;
+    transform: translateX(-200px);
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+  }
+
+  .steam-puff {
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .steam-puff:nth-child(1) { width: 28px; height: 28px; }
+  .steam-puff:nth-child(2) { width: 40px; height: 40px; margin-bottom: 10px; background: rgba(255,255,255,0.06); }
+  .steam-puff:nth-child(3) { width: 55px; height: 55px; margin-bottom: 20px; background: rgba(255,255,255,0.04); }
+
+  /* Sky/atmosphere */
+  .sky-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 300px;
+    background: linear-gradient(180deg,
+      rgba(255,140,30,0.12) 0%,
+      rgba(255,100,20,0.06) 40%,
+      transparent 100%
+    );
+  }
+
+  /* Sun/moon */
+  .sun {
+    position: absolute;
+    top: 60px;
+    right: 120px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,200,80,0.7) 0%, rgba(255,150,30,0.4) 40%, transparent 70%);
+    box-shadow: 0 0 60px rgba(255,180,50,0.3);
+  }
+
+  /* Stars */
+  .stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 250px;
+  }
+
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+  }
+
+  /* Palm trees */
+  .palm-left {
+    position: absolute;
+    bottom: 90px;
+    left: 60px;
+    width: 3px;
+    height: 120px;
+    background: linear-gradient(180deg, #3a5a20 0%, #2a4010 100%);
+    border-radius: 2px;
+  }
+
+  .palm-left::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: -25px;
+    width: 60px;
+    height: 40px;
+    background: radial-gradient(ellipse, #4a7a20 0%, transparent 70%);
+    border-radius: 50%;
+    transform: rotate(-20deg);
+  }
+
+  .palm-left::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -45px;
+    width: 70px;
+    height: 35px;
+    background: radial-gradient(ellipse, #3a6a18 0%, transparent 70%);
+    border-radius: 50%;
+    transform: rotate(20deg);
+  }
+
+  .palm-right {
+    position: absolute;
+    bottom: 90px;
+    right: 80px;
+    width: 3px;
+    height: 100px;
+    background: linear-gradient(180deg, #3a5a20 0%, #2a4010 100%);
+    border-radius: 2px;
+    transform: rotate(5deg);
+  }
+
+  .palm-right::before {
+    content: '';
+    position: absolute;
+    top: -25px;
+    right: -30px;
+    width: 65px;
+    height: 38px;
+    background: radial-gradient(ellipse, #4a7a20 0%, transparent 70%);
+    border-radius: 50%;
+    transform: rotate(15deg);
+  }
+
+  .palm-right::after {
+    content: '';
+    position: absolute;
+    top: -18px;
+    right: -10px;
+    width: 60px;
+    height: 32px;
+    background: radial-gradient(ellipse, #3a6a18 0%, transparent 70%);
+    border-radius: 50%;
+    transform: rotate(-25deg);
+  }
+
+  /* Frame overlay gradient */
+  .frame-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0,0,0,0.1) 0%,
+      transparent 30%,
+      transparent 60%,
+      rgba(0,0,0,0.5) 100%
+    );
+  }
+
+  /* Frame label */
+  .frame-label {
+    position: absolute;
+    bottom: 28px;
+    left: 32px;
+    right: 32px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .frame-label-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(100,220,130,0.8);
+    flex-shrink: 0;
+  }
+
+  .frame-label-text {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* Highlights grid */
+  .highlights {
+    position: absolute;
+    top: 1358px;
+    left: 52px;
+    right: 52px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+
+  .highlight-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .highlight-icon {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .highlight-text {
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
+  /* Dates section */
+  .dates-section {
+    position: absolute;
+    top: 1570px;
+    left: 52px;
+    right: 52px;
+  }
+
+  .dates-label {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    color: rgba(100,220,130,0.7);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .dates-row {
+    display: flex;
+    gap: 16px;
+  }
+
+  .date-card {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px;
+    padding: 22px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .date-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(100,220,130,0.4), rgba(100,220,130,0.1));
+  }
+
+  .date-month {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: rgba(100,220,130,0.7);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .date-range {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .date-year {
+    font-size: 14px;
+    color: rgba(255,255,255,0.35);
+    font-weight: 300;
+  }
+
+  /* Price section */
+  .price-section {
+    position: absolute;
+    top: 1758px;
+    left: 52px;
+    right: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .price-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .price-label {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+  }
+
+  .price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 58px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  .price-currency {
+    font-size: 28px;
+    color: rgba(100,220,130,0.8);
+    font-weight: 400;
+  }
+
+  .deposit-block {
+    text-align: right;
+  }
+
+  .deposit-label {
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .deposit-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: rgba(100,220,130,0.9);
+  }
+
+  .deposit-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+    margin-top: 2px;
+  }
+
+  /* Bottom bar */
+  .bottom-bar {
+    position: absolute;
+    bottom: 52px;
+    left: 52px;
+    right: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .instagram-handle {
+    font-size: 19px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 1px;
+  }
+
+  .cta-button {
+    background: linear-gradient(135deg, rgba(100,220,130,0.15) 0%, rgba(50,180,80,0.1) 100%);
+    border: 1px solid rgba(100,220,130,0.35);
+    border-radius: 40px;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(100,220,130,0.9);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* Small decorative elements */
+  .deco-line-v {
+    position: absolute;
+    top: 630px;
+    right: 72px;
+    width: 1px;
+    height: 0px;
+    background: rgba(255,255,255,0.12);
+  }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- Backgrounds -->
+  <div class="bg-base"></div>
+  <div class="glow-top"></div>
+  <div class="glow-mid"></div>
+  <div class="texture"></div>
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <div class="brand">Lost Voyages</div>
+    <div class="nights-badge">7G · 8N</div>
+  </div>
+
+  <!-- Country -->
+  <div class="country-label">🇱🇰 &nbsp;Sri Lanka</div>
+
+  <!-- Main title -->
+  <div class="main-title">
+    <h1>
+      <span class="italic">Sri</span><br>
+      Lanka
+    </h1>
+  </div>
+
+  <!-- Divider -->
+  <div class="divider"></div>
+
+  <!-- Image frame -->
+  <div class="image-frame">
+    <div class="image-frame-inner">
+      <div class="scene">
+
+        <!-- Sky -->
+        <div class="sky-glow"></div>
+        <div class="sun"></div>
+
+        <!-- Stars -->
+        <div class="stars">
+          <div class="star" style="width:3px;height:3px;top:30px;left:80px;opacity:0.6"></div>
+          <div class="star" style="width:2px;height:2px;top:60px;left:200px;opacity:0.4"></div>
+          <div class="star" style="width:4px;height:4px;top:45px;left:380px;opacity:0.5"></div>
+          <div class="star" style="width:2px;height:2px;top:80px;left:550px;opacity:0.7"></div>
+          <div class="star" style="width:3px;height:3px;top:25px;left:700px;opacity:0.5"></div>
+          <div class="star" style="width:2px;height:2px;top:70px;left:850px;opacity:0.4"></div>
+          <div class="star" style="width:3px;height:3px;top:110px;left:140px;opacity:0.3"></div>
+          <div class="star" style="width:2px;height:2px;top:120px;left:460px;opacity:0.5"></div>
+          <div class="star" style="width:3px;height:3px;top:90px;left:640px;opacity:0.4"></div>
+          <div class="star" style="width:2px;height:2px;top:150px;left:320px;opacity:0.3"></div>
+        </div>
+
+        <!-- Hills -->
+        <div class="hill-2"></div>
+        <div class="hill-1"></div>
+        <div class="hill-3"></div>
+
+        <!-- Palm trees -->
+        <div class="palm-left"></div>
+        <div class="palm-right"></div>
+
+        <!-- Train track -->
+        <div class="train-track"></div>
+
+        <!-- Steam -->
+        <div class="steam">
+          <div class="steam-puff"></div>
+          <div class="steam-puff"></div>
+          <div class="steam-puff"></div>
+        </div>
+
+        <!-- Train -->
+        <div class="train">
+          <div class="train-engine"></div>
+          <div class="train-car"></div>
+          <div class="train-car"></div>
+          <div class="train-car"></div>
+        </div>
+
+      </div>
+
+      <!-- Frame overlay -->
+      <div class="frame-overlay"></div>
+
+      <!-- Frame label -->
+      <div class="frame-label">
+        <div class="frame-label-dot"></div>
+        <div class="frame-label-text">Ella Tren Yolculuğu · Jeep Safari · Fil Yetimhanesi</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Highlights -->
+  <div class="highlights">
+    <div class="highlight-item">
+      <span class="highlight-icon">🏨</span>
+      <div class="highlight-text">4 Yıldızlı Otel</div>
+    </div>
+    <div class="highlight-item">
+      <span class="highlight-icon">🍳</span>
+      <div class="highlight-text">Kahvaltılar Dahil</div>
+    </div>
+    <div class="highlight-item">
+      <span class="highlight-icon">🚐</span>
+      <div class="highlight-text">Tüm Transferler</div>
+    </div>
+  </div>
+
+  <!-- Dates -->
+  <div class="dates-section">
+    <div class="dates-label">Tarihler</div>
+    <div class="dates-row">
+      <div class="date-card">
+        <div class="date-month">Haziran</div>
+        <div class="date-range">20–28</div>
+        <div class="date-year">2026</div>
+      </div>
+      <div class="date-card">
+        <div class="date-month">Temmuz</div>
+        <div class="date-range">18–26</div>
+        <div class="date-year">2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Price -->
+  <div class="price-section">
+    <div class="price-block">
+      <div class="price-label">Kişi Başı</div>
+      <div class="price-amount">
+        <span class="price-currency">€</span>
+        1.595
+      </div>
+    </div>
+    <div class="deposit-block">
+      <div class="deposit-label">Ön Ödeme</div>
+      <div class="deposit-amount">€595</div>
+      <div class="deposit-note">Kalan geziden önce</div>
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="bottom-bar">
+    <div class="instagram-handle">@ahmeterenvci</div>
+    <div class="cta-button">Yerim Ayırt</div>
+  </div>
+
+</div>
+</body>
+</html>

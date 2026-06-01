@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kuzey Işıkları — Lost Voyages</title>
+  <meta name="description" content="Aralık 2026 – Ocak 2027. Moskova · Murmansk · St. Petersburg. 7 Gece / 8 Gün. Husky kızağı, Sami köyü, Aurora avı. €2.195/kişi."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav scrolled" id="nav">
+  <a href="index.html" class="nav-logo">Lost Voyages</a>
+  <div class="nav-links">
+    <a href="index.html#turlar">Turlar</a>
+    <a href="index.html#hakkinda">Hakkında</a>
+    <a href="#kayit" class="nav-cta">Kayıt Ol</a>
+  </div>
+  <button class="nav-burger" id="burger">☰</button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="index.html#turlar" onclick="closeMobile()">Turlar</a>
+  <a href="index.html#hakkinda" onclick="closeMobile()">Hakkında</a>
+  <a href="#kayit" onclick="closeMobile()" class="mobile-cta">Kayıt Ol</a>
+</div>
+
+<!-- TOUR HERO -->
+<section class="tour-hero">
+  <div class="tour-hero-bg" style="background-image:url('images/IMG_0759.jpg')"></div>
+  <div class="tour-hero-overlay"></div>
+  <div class="tour-hero-content container">
+    <p class="tour-hero-breadcrumb">
+      <a href="index.html">Anasayfa</a> &nbsp;/&nbsp;
+      <a href="index.html#turlar">Turlar</a> &nbsp;/&nbsp;
+      Kuzey Işıkları
+    </p>
+    <h1 class="tour-hero-title">Kuzey Işıkları</h1>
+    <div class="tour-hero-meta">
+      <span class="tour-meta-item"><span class="icon">📅</span> Ara 2026 – Oca 2027 · 4 Kontenjan</span>
+      <span class="tour-meta-item"><span class="icon">🌙</span> 7 Gece / 8 Gün</span>
+      <span class="tour-meta-item"><span class="icon">👥</span> Maks. 15 Kişi</span>
+      <span class="tour-meta-item"><span class="icon">🐕</span> Husky Kızağı Dahil</span>
+      <span class="tour-meta-item"><span class="icon">🇷🇺</span> Moskova · Murmansk · St. Petersburg</span>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE BODY -->
+<div class="container tour-page-layout">
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- AURORA NOTU -->
+    <div style="background:rgba(0,200,160,0.08);border:1px solid rgba(0,200,160,0.3);border-radius:12px;padding:20px 24px;margin-bottom:32px;">
+      <p style="font-size:0.82rem;color:rgba(232,230,225,0.8);line-height:1.7;margin:0;">
+        🌌 <strong style="color:#00c8a0;">Kuzey ışıkları anlık gelişen bir doğa olayıdır.</strong>
+        Aurorayı görmek için en iyi zaman <strong>Aralık – Mart</strong> arasıdır. Murmansk'ta kutup gecesi boyunca karanlık gökyüzü, aurora borealis için ideal koşullar yaratır.
+        Profesyonel ışık avcılarımız tüm bölgedeki lokasyonları anlık takip eder. En yüksek ihtimalin olduğu <strong>2 gece</strong> ava çıkıyoruz — yüzlerce kilometre yol yapılabildiği için her gece çıkmıyoruz.
+        Doğru zamanda, doğru yerde olmak esas mesele. Akşam programları buna göre şekillenir.
+      </p>
+    </div>
+
+    <!-- PROGRAM -->
+    <section style="margin-bottom:48px;">
+      <p class="tour-section-title">Program</p>
+
+      <!-- Gün 1 -->
+      <div class="program-day">
+        <div class="program-day-head">
+          <span class="day-num">Gün 1</span>
+          <span class="day-title">🔴 Moskova — Varış</span>
+          <span class="day-toggle">▼</span>
+        </div>
+        <div class="program-day-body">
+          <div class="program-item">
+            <span class="program-time">Gündüz</span>
+            <div>
+              <div class="program-label">İstanbul → Moskova Uçuşu</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">Akşam</span>
+            <div>
+              <div class="program-label">Moskova'ya İniş &amp; Otele Check-in</div>
+              <div class="program-sub">Şehre ilk bakış · Serbest zaman</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gün 2 -->
+      <div class="program-day">
+        <div class="program-day-head">
+          <span class="day-num">Gün 2</span>
+          <span class="day-title">🔴 Moskova — Kış Masalı</span>
+          <span class="day-toggle">▼</span>
+        </div>
+        <div class="program-day-body">
+          <div class="program-item">
+            <span class="program-time">11:30</span>
+            <div>
+              <div class="program-label">Otelden Çıkış &amp; Şehir Turu Başlangıcı</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">Gündüz</span>
+            <div>
+              <div class="program-label">Noel Pazarları · Kızıl Meydan · GUM</div>
+              <div class="program-sub">Christ the Savior Katedrali · Moskova Metro Durakları</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">Akşam</span>
+            <div>
+              <div class="program-label">Karanlıkta Kızıl Meydan &amp; Noel Pazarı</div>
+              <div class="program-sub">⛸ Buz pateni (isteğe bağlı) · Sıcak içecek molası</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gün 3 -->
+      <div class="program-day">
+        <div class="program-day-head">
+          <span class="day-num">Gün 3</span>
+          <span class="day-title">✈️ Murmansk'a Varış</span>
+          <span class="day-toggle">▼</span>
+        </div>
+        <div class="program-day-body">
+          <div class="program-item">
+            <span class="program-time">18:00</span>
+            <div>
+              <div class="program-label">Murmansk'a İniş</div>
+              <div class="program-sub">Dünyanın en büyük Kuzey Kutup dairesi şehri</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">19:00</span>
+            <div>
+              <div class="program-label">Otele Varış &amp; Check-in</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">20:15</span>
+            <div>
+              <div class="program-label">Restorantta Akşam Yemeği</div>
+              <div class="program-sub">Lobide buluşma</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">Sonra</span>
+            <div>
+              <div class="program-label">🌌 Kuzey Işıkları Avı</div>
+              <div class="program-sub">Koşullar uygunsa yemekten direkt ava · Uygun değilse dinlenme</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gün 4 -->
+      <div class="program-day">
+        <div class="program-day-head">
+          <span class="day-num">Gün 4</span>
+          <span class="day-title">🐕 Husky Parkı &amp; Lapland Macerası</span>
+          <span class="day-toggle">▼</span>
+        </div>
+        <div class="program-day-body">
+          <div class="program-item">
+            <span class="program-time">09:50</span>
+            <div>
+              <div class="program-label">Lobide Buluşma</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">11:00</span>
+            <div>
+              <div class="program-label">Husky Parkı'na Varış</div>
+              <div class="program-sub">🛷 Husky kızağı · 🦌 Ren geyiği kızağı · ❄️ Kar motoru · Husky'lerle vakit</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">16:40</span>
+            <div>
+              <div class="program-label">Akşam Yemeği</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">Sonra</span>
+            <div>
+              <div class="program-label">🌌 Solar Aktivite Değerlendirmesi → Işık Avı</div>
+              <div class="program-sub">Koşullar uygunsa ava çıkış</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gün 5 -->
+      <div class="program-day">
+        <div class="program-day-head">
+          <span class="day-num">Gün 5</span>
+          <span class="day-title">⚓ Alyosha Tepesi · Nükleer Buzkıran · Ice Floating</span>
+          <span class="day-toggle">▼</span>
+        </div>
+        <div class="program-day-body">
+          <div class="program-item">
+            <span class="program-time">10:20</span>
+            <div>
+              <div class="program-label">Lobide Buluşma</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">10:45</span>
+            <div>
+              <div class="program-label">Alyosha Tepesi Ziyareti</div>
+              <div class="program-sub">Murmansk'ın simgesi — panoramik liman manzarası</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">12:00–13:00</span>
+            <div>
+              <div class="program-label">🚢 Lenin — Dünyanın İlk Nükleer Buzkıran Gemisi</div>
+              <div class="program-sub">Tarihi gemiyi içeriden keşfet</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">14:00–15:00</span>
+            <div>
+              <div class="program-label">❄️ Ice Floating <span style="font-size:0.75rem;color:rgba(212,160,23,0.85);">(+120€ ekstra)</span></div>
+              <div class="program-sub">Donmuş Kuzey Buz Denizi'nde yüzme deneyimi — isteğe bağlı</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">16:40</span>
+            <div>
+              <div class="program-label">Akşam Yemeği</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">Sonra</span>
+            <div>
+              <div class="program-label">🌌 Işık Avı Durumu Değerlendirmesi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gün 6 -->
+      <div class="program-day">
+        <div class="program-day-head">
+          <span class="day-num">Gün 6</span>
+          <span class="day-title">🏕️ Saami Köyü Programı</span>
+          <span class="day-toggle">▼</span>
+        </div>
+        <div class="program-day-body">
+          <div class="program-item">
+            <span class="program-time">12:50</span>
+            <div>
+              <div class="program-label">Saami Köyü Programı İçin Lobide Buluşma</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">14:00</span>
+            <div>
+              <div class="program-label">Saami Köyü Programı</div>
+              <div class="program-sub">Geleneksel Sami kıyafetleri · Ren geyiği · Lavvu çadırında geleneksel yemek</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">17:00</span>
+            <div>
+              <div class="program-label">Akşam Yemeği</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">Sonra</span>
+            <div>
+              <div class="program-label">🌌 Işık Avı Durumu Değerlendirmesi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gün 7 -->
+      <div class="program-day">
+        <div class="program-day-head">
+          <span class="day-num">Gün 7</span>
+          <span class="day-title">🏛️ Murmansk → St. Petersburg</span>
+          <span class="day-toggle">▼</span>
+        </div>
+        <div class="program-day-body">
+          <div class="program-item">
+            <span class="program-time">09:20</span>
+            <div>
+              <div class="program-label">Havalimanı İçin Lobide Buluşma</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">Öğleden Sonra</span>
+            <div>
+              <div class="program-label">St. Petersburg'a İniş</div>
+              <div class="program-sub">Otel check-in</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">Akşam</span>
+            <div>
+              <div class="program-label">Nevsky Bulvarı &amp; Akşam Yemeği</div>
+              <div class="program-sub">Şehrin ana caddesinde yürüyüş, serbest zaman</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gün 8 -->
+      <div class="program-day">
+        <div class="program-day-head">
+          <span class="day-num">Gün 8</span>
+          <span class="day-title">✈️ St. Petersburg → İstanbul — Dönüş</span>
+          <span class="day-toggle">▼</span>
+        </div>
+        <div class="program-day-body">
+          <div class="program-item">
+            <span class="program-time">07:00–11:00</span>
+            <div>
+              <div class="program-label">Otel Kahvaltısı</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">13:30</span>
+            <div>
+              <div class="program-label">Havalimanı İçin Lobide Buluşma</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <span class="program-time">17:30</span>
+            <div>
+              <div class="program-label">✈️ İstanbul Uçuşu</div>
+              <div class="program-sub">Yanında kuzey ışıkları anıları...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- GALERI -->
+    <section style="margin-bottom:48px;">
+      <p class="tour-section-title">Gezi Fotoğrafları</p>
+      <div class="photo-slider" style="margin-top:24px;">
+        <div class="photo-slider-track fwd">
+          <div class="photo-slide"><img src="images/gallery/ki-aurora-erkek.jpg" alt="Kuzey Işıkları altında" loading="lazy"/></div>
+          <div class="photo-slide"><img src="images/gallery/ki-aurora-cift.jpg" alt="Aurora altında iki kişi" loading="lazy"/></div>
+          <div class="photo-slide"><img src="images/gallery/ki-aurora-grup.jpg" alt="Grup aurora altında" loading="lazy"/></div>
+          <div class="photo-slide"><img src="images/gallery/ki-aurora-gol.jpg" alt="Aurora göl yansıması" loading="lazy"/></div>
+          <div class="photo-slide"><img src="images/gallery/ki-sami-selfie.jpg" alt="Sami köyü" loading="lazy"/></div>
+          <div class="photo-slide"><img src="images/gallery/ki-sami-grup.jpg" alt="Sami kıyafetleri" loading="lazy"/></div>
+          <div class="photo-slide"><img src="images/gallery/ki-husky-erkek.jpg" alt="Husky deneyimi" loading="lazy"/></div>
+          <div class="photo-slide"><img src="images/gallery/buz-yuzme.jpg" alt="Buz yüzme" loading="lazy"/></div>
+          <div class="photo-slide"><img src="images/gallery/ki-kar-cift.jpg" alt="Lapland kış" loading="lazy"/></div>
+          <div class="photo-slide"><img src="images/gallery/aurora-portrait.jpg" alt="Aurora altında" loading="lazy"/></div>
+          <!-- döngü kopyası -->
+          <div class="photo-slide"><img src="images/gallery/ki-aurora-erkek.jpg" alt="Kuzey Işıkları altında" loading="lazy"/></div>
+          <div class="photo-slide"><img src="images/gallery/ki-aurora-cift.jpg" alt="Aurora altında iki kişi" loading="lazy"/></div>
+          <div class="photo-slide"><img src="images/gallery/ki-aurora-grup.jpg" alt="Grup aurora altında" loading="lazy"/></div>
+          <div class="photo-slide"><img src="images/gallery/ki-aurora-gol.jpg" alt="Aurora göl yansıması" loading="lazy"/></div>
+          <div class="photo-slide"><img src="images/gallery/ki-sami-selfie.jpg" alt="Sami köyü" loading="lazy"/></div>
+          <div class="photo-slide"><img src="images/gallery/ki-sami-grup.jpg" alt="Sami kıyafetleri" loading="lazy"/></div>
+          <div class="photo-slide"><img src="images/gallery/ki-husky-erkek.jpg" alt="Husky deneyimi" loading="lazy"/></div>
+          <div class="photo-slide"><img src="images/gallery/buz-yuzme.jpg" alt="Buz yüzme" loading="lazy"/></div>
+          <div class="photo-slide"><img src="images/gallery/ki-kar-cift.jpg" alt="Lapland kış" loading="lazy"/></div>
+          <div class="photo-slide"><img src="images/gallery/aurora-portrait.jpg" alt="Aurora altında" loading="lazy"/></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DAHIL / HARIÇ -->
+    <section style="margin-bottom:48px;">
+      <p class="tour-section-title">Tur Kapsamı</p>
+      <div class="inc-exc-grid">
+        <div class="inc-block">
+          <h4>✓ Dahil</h4>
+          <ul>
+            <li>Moskova'da 2 gece 4 yıldızlı otel</li>
+            <li>Murmansk'ta 4 gece 4 yıldızlı otel</li>
+            <li>St. Petersburg'da 1 gece 4 yıldızlı otel</li>
+            <li>Tüm transferler (havalimanı ⇄ otel)</li>
+            <li>Husky kızağı deneyimi</li>
+            <li>Ren geyiği kızağı</li>
+            <li>Kar motoru safarisi</li>
+            <li>Sami köyü ziyareti &amp; aktiviteler</li>
+            <li>2× Aurora Avı turu (rehber eşliğinde)</li>
+            <li>Işık avı fotoğraf çekimi</li>
+            <li>7 kahvaltı</li>
+          </ul>
+        </div>
+        <div class="exc-block">
+          <h4>✕ Dahil Değil</h4>
+          <ul>
+            <li>
+              <strong>Uçak Biletleri ✈️</strong>
+              <p style="font-size:0.8rem;color:rgba(232,230,225,0.65);margin:6px 0 10px;line-height:1.6;">
+                Uçak biletlerini birlikte satın alıyoruz. 2 Yurt Dışı, 2 Rusya içi uçuş satın alacağız.
+                Tüm biletler toplam <strong>~650€</strong> civarında tutuyor.
+                Grupta yeriniz kesinleştiğinde almanız gereken biletleri satın alabileceğiniz link ile birlikte size ileteceğiz 🙌
+              </p>
+            </li>
+            <li>
+              <strong>Rusya Vizesi</strong>
+              <p style="font-size:0.8rem;color:rgba(232,230,225,0.65);margin:6px 0 4px;line-height:1.6;">
+                Başvuruyu sizin adınıza biz yapıyoruz. Vize ücreti <strong>100€</strong>'dur. Vize çıkmama riski yoktur.
+              </p>
+            </li>
+            <li>Buz yüzme aktivitesi <span style="color:rgba(212,160,23,0.85);">(+120€ isteğe bağlı)</span></li>
+            <li>Dahil olmayan öğün &amp; içecekler</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÖDEME & İPTAL -->
+    <section style="margin-bottom:48px;">
+      <p class="tour-section-title">Ödeme &amp; İptal Koşulları</p>
+      <div class="notes-list" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:12px;padding:24px 28px;">
+        <p style="color:#D4A017;font-weight:700;font-size:0.95rem;margin:0 0 8px;">Gezi Ücreti: 2.195€ <span style="font-weight:400;color:rgba(232,230,225,0.5);font-size:0.8rem;">(Uçak Bileti Hariç)</span></p>
+        <p style="color:rgba(232,230,225,0.75);font-size:0.87rem;line-height:1.75;margin:0 0 20px;">
+          Grupta yerinizi kesinleştirmek için <strong style="color:#e8e6e1;">595€ ön ödeme</strong> yapılacak.
+          Kalan kısım geziden bir ay öncesine kadar tamamlanabilir 🙌
+        </p>
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:0 0 20px;"/>
+        <p style="color:#e8e6e1;font-weight:600;font-size:0.88rem;margin:0 0 12px;">İptal Politikası</p>
+        <ul style="color:rgba(232,230,225,0.72);font-size:0.84rem;line-height:1.8;padding-left:18px;margin:0;">
+          <li>Kayıt oluşturulduktan sonra, geziye <strong>60 günden fazla</strong> süre kala yapılan iptallerde 80€ kesinti uygulanır. Kalan tutar iade edilir.</li>
+          <li>Geziye <strong>60–30 gün</strong> kala yapılan iptallerde 100€ kesinti uygulanır.</li>
+          <li>Geziye <strong>30 günden az</strong> süre kala yapılan iptallerde ödenen kapora iade edilmez (kapora yanar).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- NOTLAR -->
+    <section style="margin-bottom:48px;">
+      <p class="tour-section-title">Önemli Notlar</p>
+      <ul class="notes-list">
+        <li>Tek kişilik oda farkı: 400€ ek ücret.</li>
+        <li>3 yıldır Murmansk bölgesinde faaliyet gösteren en iyi ışık avcılarıyla çalışıyoruz. Sektördeki en yüksek aurora görme oranına sahibiz — doğru ekip, doğru zamanlama.</li>
+        <li>Murmansk'ta kutup gecesi — günde 21 saate varan karanlık. Aurora avı için mükemmel koşullar!</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="tour-sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-price-block">
+        <p class="sidebar-price-label">Kişi Başı Fiyat</p>
+        <div class="sidebar-price">€2.195</div>
+        <p class="sidebar-price-note">uçak hariç · tüm vergiler dahil</p>
+        <p class="sidebar-price-single">Tek kişilik oda farkı: +400€</p>
+      </div>
+      <div class="sidebar-details">
+        <div class="sidebar-row" style="flex-direction:column;align-items:flex-start;gap:6px;">
+          <span class="lbl">📅 Kontenjanlar</span>
+          <span class="val" style="display:flex;flex-direction:column;gap:5px;width:100%;text-align:right;">
+            <span>🗓 12–19 Ara 2026 <em style="color:rgba(212,160,23,0.8);font-style:normal;font-size:0.72rem;">NOEL</em></span>
+            <span>🗓 26 Ara – 02 Oca <em style="color:rgba(212,160,23,0.8);font-style:normal;font-size:0.72rem;">YILBAŞI</em></span>
+            <span>🗓 16–23 Oca 2027 <em style="color:rgba(212,160,23,0.8);font-style:normal;font-size:0.72rem;">ARA TATİL</em></span>
+            <span>🗓 24–31 Oca 2027 <em style="color:rgba(212,160,23,0.8);font-style:normal;font-size:0.72rem;">ARA TATİL</em></span>
+          </span>
+        </div>
+        <div class="sidebar-row">
+          <span class="lbl">Süre</span>
+          <span class="val">7G / 8G</span>
+        </div>
+        <div class="sidebar-row">
+          <span class="lbl">Rota</span>
+          <span class="val">Moskova · Murmansk · St. Petersburg</span>
+        </div>
+        <div class="sidebar-row">
+          <span class="lbl">Grup</span>
+          <span class="val">Maks. 15 Kişi</span>
+        </div>
+        <div class="sidebar-row">
+          <span class="lbl">Konaklama</span>
+          <span class="val">4 Yıldızlı</span>
+        </div>
+        <div class="sidebar-row">
+          <span class="lbl">Ön Ödeme</span>
+          <span class="val">595€</span>
+        </div>
+      </div>
+      <div class="sidebar-cta" id="kayit">
+        <a href="#kayit-form">Kayıt Formunu Doldur</a>
+        <a href="https://wa.me/905451706927?text=Kuzey%20Işıkları%20turu%20hakkında%20bilgi%20almak%20istiyorum" class="sidebar-wa" target="_blank">💬 WhatsApp'tan Sor</a>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<!-- KAYIT FORMU -->
+<section class="section section-dark" id="kayit-form">
+  <div class="container" style="max-width:640px;">
+    <div class="section-head">
+      <p class="section-label">Ön Kayıt</p>
+      <h2 class="section-title">Kuzey Işıkları — Kayıt Ol</h2>
+      <p class="section-sub">Hangi kontenjanı tercih ettiğini belirt, seni en kısa sürede arayalım.</p>
+    </div>
+    <div class="contact-form-wrap tour-form-wrap">
+      <form class="contact-form tour-form" netlify name="ki-kayit" method="POST" action="?sent=1">
+        <input type="hidden" name="form-name" value="ki-kayit"/>
+        <input type="hidden" name="tur" value="Kuzey Işıkları 2026–2027"/>
+        <div class="form-group">
+          <input type="text" name="ad-soyad" placeholder="Ad Soyad" required/>
+        </div>
+        <div class="form-group">
+          <input type="tel" name="telefon" placeholder="Telefon (+90...)" required/>
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" placeholder="E-posta"/>
+        </div>
+        <div class="form-group">
+          <select name="kontenjan">
+            <option value="">Tercih Ettiğiniz Kontenjan</option>
+            <option value="12-19 Aralik 2026 NOEL">12–19 Aralık 2026 — NOEL</option>
+            <option value="26 Aralik - 02 Ocak YILBASI">26 Ara – 02 Oca — YILBAŞI ÖZEL</option>
+            <option value="16-23 Ocak 2027 ARA TATIL 1">16–23 Ocak 2027 — ARA TATİL</option>
+            <option value="24-31 Ocak 2027 ARA TATIL 2">24–31 Ocak 2027 — ARA TATİL</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select name="kisi-sayisi">
+            <option value="1">1 Kişi</option>
+            <option value="2">2 Kişi</option>
+            <option value="3+">3 veya daha fazla</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea name="mesaj" placeholder="Merak ettiğin bir şey var mı?" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn-gold btn-full">Kayıt Formunu Gönder</button>
+        <p style="font-size:0.72rem;text-align:center;color:rgba(232,230,225,0.35);margin-top:12px;">
+          Gönder tuşuna basarak bizi aramanıza izin vermiş olursunuz.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">Lost Voyages</a>
+      <p>Beklemekten Sıkılmadın mı?</p>
+    </div>
+    <div class="footer-nav">
+      <a href="index.html#turlar">2026 Turları</a>
+      <a href="index.html#hakkinda">Hakkında</a>
+      <a href="index.html#nasil">Nasıl Çalışır?</a>
+      <a href="index.html#iletisim">İletişim</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://instagram.com/ahmeterenvci" target="_blank" title="Instagram">📸</a>
+      <a href="https://wa.me/905451706927" target="_blank" title="WhatsApp">💬</a>
+      <a href="https://youtube.com/@lostvoyages" target="_blank" title="YouTube">▶️</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Lost Voyages · iletisim@lostvoyages.com</p>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/905451706927?text=Kuzey%20Işıkları%20turu%20hakkında%20bilgi%20almak%20istiyorum." class="wa-float" target="_blank" title="WhatsApp'tan Ulaş">
+  <svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- MOBİL STICKY REZERVASYON -->
+<div class="mobile-sticky-cta">
+  <div class="sticky-price">
+    €2.195<span>uçak hariç</span>
+  </div>
+  <a href="https://wa.me/905451706927?text=Kuzey%20Işıkları%20turu%20hakkında%20bilgi%20almak%20istiyorum" class="sticky-btn" target="_blank">Kayıt Ol →</a>
+</div>
+
+<script src="js/main.js"></script>
+<script>document.fonts.ready.then(function(){document.documentElement.classList.add('fonts-ready');});</script>
+</body>
+</html>
