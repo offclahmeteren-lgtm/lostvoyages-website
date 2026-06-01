@@ -196,21 +196,20 @@ html.fonts-ready .nav-logo {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  animation: kenBurns 18s ease-in-out infinite alternate;
-  -webkit-animation: kenBurns 18s ease-in-out infinite alternate;
   will-change: transform;
 }
 
-@keyframes kenBurns {
-  0%   { transform: scale(1)    translate(0, 0); }
-  50%  { transform: scale(1.06) translate(-1%, -1%); }
-  100% { transform: scale(1.10) translate(1%,  -2%); }
+/* Ken Burns sadece mobilde — masaüstünde kaldır, performans için */
+@media (max-width: 960px) {
+  .hero-img {
+    animation: kenBurns 18s ease-in-out infinite alternate;
+  }
 }
 
-@-webkit-keyframes kenBurns {
-  0%   { -webkit-transform: scale(1)    translate(0, 0); }
-  50%  { -webkit-transform: scale(1.06) translate(-1%, -1%); }
-  100% { -webkit-transform: scale(1.10) translate(1%,  -2%); }
+@keyframes kenBurns {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(-1%, -1%, 0) scale(1.06); }
+  100% { transform: translate3d(1%, -2%, 0) scale(1.10); }
 }
 
 .hero-overlay {
@@ -1456,6 +1455,8 @@ html.fonts-ready .nav-logo {
   gap: 0;
   width: max-content;
   animation: marquee 28s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .marquee-track span {
