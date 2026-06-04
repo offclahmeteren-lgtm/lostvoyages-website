@@ -610,5 +610,14 @@
 
 <script src="js/main.js"></script>
 <script>document.fonts.ready.then(function(){document.documentElement.classList.add('fonts-ready');});</script>
+<script>
+document.querySelectorAll('form[action*="formspree"]').forEach(function(form){
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}})
+      .then(function(r){if(r.ok)window.location.href='/thank-you.html';});
+  });
+});
+</script>
 </body>
 </html>
