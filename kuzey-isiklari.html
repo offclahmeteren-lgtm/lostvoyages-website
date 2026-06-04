@@ -530,8 +530,9 @@
       <p class="section-sub">Hangi kontenjanı tercih ettiğini belirt, seni en kısa sürede arayalım.</p>
     </div>
     <div class="contact-form-wrap tour-form-wrap">
-      <form class="contact-form tour-form" netlify name="ki-kayit" method="POST" action="/thank-you.html">
-        <input type="hidden" name="form-name" value="ki-kayit"/>
+      <form class="contact-form tour-form" method="POST" action="https://formspree.io/f/mojzqbvr">
+        <input type="hidden" name="_next" value="/thank-you.html"/>
+        <input type="hidden" name="_subject" value="Kuzey Işıkları Turu Başvurusu"/>
         <input type="hidden" name="tur" value="Kuzey Işıkları 2026–2027"/>
         <div class="form-group">
           <input type="text" name="ad-soyad" placeholder="Ad Soyad" required/>

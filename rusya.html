@@ -396,8 +396,9 @@
       <p class="section-sub">Formu doldur, 24 saat içinde seni arayalım.</p>
     </div>
     <div class="contact-form-wrap tour-form-wrap">
-      <form class="contact-form tour-form" netlify name="rusya-kayit" method="POST" action="/thank-you.html">
-        <input type="hidden" name="form-name" value="rusya-kayit"/>
+      <form class="contact-form tour-form" method="POST" action="https://formspree.io/f/mojzqbvr">
+        <input type="hidden" name="_next" value="/thank-you.html"/>
+        <input type="hidden" name="_subject" value="Rusya Turu Başvurusu"/>
         <input type="hidden" name="tur" value="Rusya Beyaz Geceler — 10–15 Temmuz 2026"/>
         <div class="form-group">
           <input type="text" name="ad-soyad" placeholder="Ad Soyad" required/>

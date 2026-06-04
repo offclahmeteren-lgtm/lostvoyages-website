@@ -557,8 +557,9 @@
       </div>
     </div>
     <div class="contact-form-wrap">
-      <form class="contact-form" netlify name="iletisim" method="POST" action="/thank-you.html">
-        <input type="hidden" name="form-name" value="iletisim"/>
+      <form class="contact-form" method="POST" action="https://formspree.io/f/mojzqbvr">
+        <input type="hidden" name="_next" value="/thank-you.html"/>
+        <input type="hidden" name="_subject" value="İletişim Formu"/>
         <div class="form-group">
           <input type="text" name="ad" placeholder="Adınız" required/>
         </div>
@@ -630,8 +631,9 @@
       <h3 class="bildiri-title">Tur Açıldığında Haber Al</h3>
       <p class="bildiri-sub" id="bildiriTurAdi">Bu tur için kayıt açıldığında seni ilk biz arayalım.</p>
     </div>
-    <form class="bildiri-form" netlify name="bildiri" method="POST" action="/thank-you.html">
-      <input type="hidden" name="form-name" value="bildiri"/>
+    <form class="bildiri-form" method="POST" action="https://formspree.io/f/mojzqbvr">
+      <input type="hidden" name="_next" value="/thank-you.html"/>
+      <input type="hidden" name="_subject" value="Tur Bildiri Kaydı"/>
       <input type="hidden" name="tur" id="bildiriTurInput" value=""/>
       <div class="bildiri-row">
         <input type="text" name="ad" placeholder="Adın" required/>

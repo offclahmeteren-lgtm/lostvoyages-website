@@ -524,8 +524,9 @@
       <p class="section-sub">Hangi tarih grubuna katılmak istediğini belirt, seni en kısa sürede arayalım.</p>
     </div>
     <div class="contact-form-wrap tour-form-wrap">
-      <form class="contact-form tour-form" netlify name="sl-kayit" method="POST" action="/thank-you.html">
-        <input type="hidden" name="form-name" value="sl-kayit"/>
+      <form class="contact-form tour-form" method="POST" action="https://formspree.io/f/mojzqbvr">
+        <input type="hidden" name="_next" value="/thank-you.html"/>
+        <input type="hidden" name="_subject" value="Sri Lanka Turu Başvurusu"/>
         <input type="hidden" name="tur" value="Sri Lanka 2026"/>
         <div class="form-group">
           <input type="text" name="ad-soyad" placeholder="Ad Soyad" required/>
