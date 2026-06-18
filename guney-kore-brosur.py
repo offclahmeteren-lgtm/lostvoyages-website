@@ -119,7 +119,7 @@ def reklame(c, text, cx, cy, size, rgba=(200,148,14,255), align="center"):
 def footer(c):
     R(c, 0, 0, W, 1*cm, fill=NAVY)
     T(c,"lostvoyages.com  ·  iletisim@lostvoyages.com  ·  +90 545 170 69 27  ·  TÜRSAB 9113",
-      W/2, 3.5*mm,"M-Regular",6.5,HexColor("#c0b8a0"),"center")
+      W/2, 4.2*mm,"M-Regular",6.5,HexColor("#c0b8a0"),"center")
 
 # ══════════════════════════════════════════════════════════════════════════════
 # SAYFA 1 — KAPAK
@@ -438,7 +438,7 @@ if remaining_h > 0.5*cm:
     R(cv, RX2, inc_cy, 3, remaining_h, fill=RED_M)
     note_cx = RX2 + 0.4*cm
     note_cy = inc_cy + remaining_h * 0.62  # dikey olarak yaklaşık ortala
-    T(cv, "Akşam yemekleri kişisel bütçenize aittir — Kore'nin eşsiz sokak lezzetlerini özgürce keşfedin!",
+    T(cv, "Akşam yemeklerini rehberimizle birlikte keşfedebilirsiniz — Kore'nin eşsiz sokak lezzetleri sizi bekliyor!",
       note_cx, note_cy, "M-Light", 8.5, MUTED, max_w=HALF-0.6*cm)
 
 cy = min(inc_cy, exc_cy)
@@ -535,7 +535,8 @@ cy -= CARD_H + 0.35*cm
 
 # ── İLETİŞİM ─────────────────────────────────────────────────────────────────
 L(cv, LM, cy, RM, cy, BORDER, 0.5)
-cy -= 0.55*cm
+# Satırı çizgi ile navy footer arasında dikey olarak ortala
+_contact_y = 1*cm + (cy - 1*cm) / 2 - 3  # 3pt cap-height ofseti
 
 for i,(val,fnt,col) in enumerate([
     ("lostvoyages.com",          "M-SemiBold", NAVY),
@@ -544,7 +545,7 @@ for i,(val,fnt,col) in enumerate([
     ("@ahmeterenvci",            "M-Regular",  MUTED),
 ]):
     sx = LM + i*(CW/4) + (CW/4)/2
-    T(cv, val, sx, cy, fnt, 8.5, col, "center")
+    T(cv, val, sx, _contact_y, fnt, 8.5, col, "center")
 
 footer(cv)
 cv.showPage()
