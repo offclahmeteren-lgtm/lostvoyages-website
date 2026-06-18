@@ -191,7 +191,7 @@ cy = INFO_TOP - 0.65*cm
 T(cv, "KİŞİ BAŞI FİYAT", LCX, cy, "M-Bold", 7, GOLD, "center")
 cy -= 13
 
-_, prh = reklame(cv, "3.190 €", LCX, cy, 38,
+_, prh = reklame(cv, "3.095 €", LCX, cy, 38,
                   rgba=(26,23,48,255), align="center")
 cy -= prh + 4
 
@@ -204,7 +204,7 @@ cy -= 11
 
 # Ön ödeme satırı — düzenli iki sütun
 T(cv,"Ön ödeme:", LM+0.2*cm, cy,"M-Regular",8,MUTED)
-T(cv,"1.190 €",  LM+2.1*cm, cy,"M-SemiBold",9,NAVY)
+T(cv,"1.095 €",  LM+2.1*cm, cy,"M-SemiBold",9,NAVY)
 cy -= 12
 
 T(cv,"kalan taksitlerle  ·  tek kişilik oda farkı +400 €",
@@ -475,10 +475,10 @@ BOX_H = 1.5*cm
 R(cv, LM, cy-BOX_H, CW, BOX_H, fill=NAVY, r=5)
 R(cv, LM, cy-BOX_H, 5, BOX_H, fill=GOLD)
 
-_, ph2 = reklame(cv,"3.190 €", LM+0.5*cm, cy-0.12*cm, 26,
+_, ph2 = reklame(cv,"3.095 €", LM+0.5*cm, cy-0.12*cm, 26,
                   rgba=(232,173,24,255), align="left")
 T(cv,"kişi başı · uçak dahil",  LM+0.5*cm, cy-BOX_H+0.28*cm,"M-Light",8,HexColor("#a09080"))
-T(cv,"Ön ödeme: 1.190 €  ·  kalan aylık ödemelerle",
+T(cv,"Ön ödeme: 1.095 €  ·  kalan aylık ödemelerle",
   RM-0.3*cm, cy-0.55*cm,"M-SemiBold",9,WHITE,"right")
 T(cv,"Tek kişilik oda farkı: +400 €",
   RM-0.3*cm, cy-BOX_H+0.28*cm,"M-Light",8.5,HexColor("#a09080"),"right")
