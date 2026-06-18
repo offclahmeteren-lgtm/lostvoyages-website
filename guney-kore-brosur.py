@@ -475,10 +475,10 @@ BOX_H = 1.5*cm
 R(cv, LM, cy-BOX_H, CW, BOX_H, fill=NAVY, r=5)
 R(cv, LM, cy-BOX_H, 5, BOX_H, fill=GOLD)
 
-_, ph2 = reklame(cv,"3.490 €", LM+0.5*cm, cy-0.12*cm, 26,
+_, ph2 = reklame(cv,"3.190 €", LM+0.5*cm, cy-0.12*cm, 26,
                   rgba=(232,173,24,255), align="left")
 T(cv,"kişi başı · uçak dahil",  LM+0.5*cm, cy-BOX_H+0.28*cm,"M-Light",8,HexColor("#a09080"))
-T(cv,"Ön ödeme: 1.290 €  ·  kalan aylık ödemelerle",
+T(cv,"Ön ödeme: 1.190 €  ·  kalan aylık ödemelerle",
   RM-0.3*cm, cy-0.55*cm,"M-SemiBold",9,WHITE,"right")
 T(cv,"Tek kişilik oda farkı: +400 €",
   RM-0.3*cm, cy-BOX_H+0.28*cm,"M-Light",8.5,HexColor("#a09080"),"right")
