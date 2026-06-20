@@ -843,14 +843,6 @@
     noResult.classList.toggle('show', visibleCount === 0);
   });
 
-  // Nav mobile
-  const burger = document.getElementById('burger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const mobileClose = document.getElementById('mobileClose');
-  function closeMobile() { mobileMenu.classList.remove('open'); }
-  if (burger) burger.addEventListener('click', () => mobileMenu.classList.add('open'));
-  if (mobileClose) mobileClose.addEventListener('click', closeMobile);
-
   document.fonts.ready.then(() => document.documentElement.classList.add('fonts-ready'));
 </script>
 </body>
