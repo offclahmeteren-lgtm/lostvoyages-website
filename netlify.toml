@@ -6,6 +6,27 @@
   to = "/rusya.html"
   status = 200
 
+# Eski site sayfaları — Google'ın indeksinden düşmesi için 404 döndür
+[[redirects]]
+  from = "/book-online*"
+  to = "/404"
+  status = 404
+
+[[redirects]]
+  from = "/rezervasyon*"
+  to = "/404"
+  status = 404
+
+[[redirects]]
+  from = "/kutup-ekspresi*"
+  to = "/404"
+  status = 404
+
+[[redirects]]
+  from = "/hizmetler*"
+  to = "/404"
+  status = 404
+
 [[headers]]
   for = "/*"
   [headers.values]
