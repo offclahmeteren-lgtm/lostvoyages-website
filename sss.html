@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sık Sorulan Sorular — Lost Voyages</title>
+  <meta name="description" content="Lost Voyages turları hakkında merak ettiğin her şey: kayıt, ödeme, vize, konaklama ve daha fazlası."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVSGPPVJQ0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GVSGPPVJQ0');
+  </script>
+
+  <style>
+    /* ── FAQ Sayfa Stilleri ────────────────────────────────────────── */
+    .faq-hero {
+      background: linear-gradient(135deg, #0F1923 0%, #1a2a3a 100%);
+      padding: 120px 0 60px;
+      text-align: center;
+      border-bottom: 1px solid rgba(212,160,23,0.2);
+    }
+    .faq-hero-tag {
+      display: inline-block;
+      background: rgba(212,160,23,0.15);
+      color: #D4A017;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 50px;
+      border: 1px solid rgba(212,160,23,0.3);
+      margin-bottom: 20px;
+    }
+    .faq-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      color: #e8e6e1;
+      margin: 0 0 16px;
+      letter-spacing: -0.02em;
+    }
+    .faq-hero p {
+      color: rgba(232,230,225,0.55);
+      font-size: 1rem;
+      max-width: 500px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+    .faq-search-wrap {
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .faq-search {
+      width: 100%;
+      padding: 14px 50px 14px 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: #e8e6e1;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+    }
+    .faq-search::placeholder { color: rgba(232,230,225,0.35); }
+    .faq-search:focus { border-color: rgba(212,160,23,0.5); }
+    .faq-search-icon {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(232,230,225,0.35);
+      pointer-events: none;
+      font-size: 1rem;
+    }
+
+    /* ── Kategoriler ──────────────────────────────────────────────── */
+    .faq-main {
+      background: #111820;
+      padding: 64px 0 100px;
+      min-height: 60vh;
+    }
+    .faq-container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .faq-category {
+      margin-bottom: 52px;
+    }
+    .faq-category-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #D4A017;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .faq-category-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(212,160,23,0.2);
+    }
+
+    /* ── Accordion ────────────────────────────────────────────────── */
+    .faq-item {
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      transition: border-color 0.25s;
+      background: rgba(255,255,255,0.025);
+    }
+    .faq-item.active,
+    .faq-item:hover {
+      border-color: rgba(212,160,23,0.25);
+    }
+    .faq-item.hidden { display: none; }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 20px 24px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      color: #e8e6e1;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.45;
+      transition: color 0.2s;
+    }
+    .faq-q:hover { color: #fff; }
+    .faq-item.active .faq-q { color: #D4A017; }
+
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      transition: transform 0.3s, background 0.2s;
+      color: rgba(232,230,225,0.5);
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+      background: rgba(212,160,23,0.15);
+      color: #D4A017;
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s;
+    }
+    .faq-item.active .faq-a {
+      max-height: 600px;
+    }
+    .faq-a-inner {
+      padding: 0 24px 22px;
+      color: rgba(232,230,225,0.65);
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+    .faq-a-inner strong {
+      color: rgba(232,230,225,0.85);
+    }
+    .faq-a-inner ul {
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+    .faq-a-inner ul li {
+      margin-bottom: 6px;
+    }
+    .faq-a-inner .step {
+      display: flex;
+      gap: 14px;
+      margin: 8px 0;
+      align-items: flex-start;
+    }
+    .faq-a-inner .step-num {
+      min-width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(212,160,23,0.2);
+      color: #D4A017;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    /* ── No results ───────────────────────────────────────────────── */
+    .faq-no-result {
+      text-align: center;
+      padding: 60px 0;
+      color: rgba(232,230,225,0.35);
+      display: none;
+    }
+    .faq-no-result.show { display: block; }
+    .faq-no-result p { font-size: 0.95rem; margin-top: 8px; }
+
+    /* ── CTA Alt ──────────────────────────────────────────────────── */
+    .faq-cta {
+      background: linear-gradient(135deg, #1a2232 0%, #0F1923 100%);
+      border: 1px solid rgba(212,160,23,0.2);
+      border-radius: 20px;
+      padding: 48px 32px;
+      text-align: center;
+      margin-top: 64px;
+    }
+    .faq-cta h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #e8e6e1;
+      margin: 0 0 10px;
+    }
+    .faq-cta p {
+      color: rgba(232,230,225,0.5);
+      font-size: 0.9rem;
+      margin: 0 0 28px;
+    }
+    .faq-cta-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-faq-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #25D366;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 13px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-faq-wa:hover { opacity: 0.88; }
+    .btn-faq-tours {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212,160,23,0.12);
+      color: #D4A017;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 13px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid rgba(212,160,23,0.3);
+      transition: background 0.2s;
+    }
+    .btn-faq-tours:hover { background: rgba(212,160,23,0.2); }
+
+    @media(max-width:600px) {
+      .faq-hero { padding: 100px 20px 50px; }
+      .faq-q { font-size: 0.87rem; padding: 16px 18px; }
+      .faq-a-inner { padding: 0 18px 18px; font-size: 0.85rem; }
+      .faq-cta { padding: 36px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">Lost Voyages</a>
+  <div class="nav-links">
+    <a href="index.html#turlar">Turlar</a>
+    <a href="index.html#galeri">Galeri</a>
+    <a href="index.html#yorumlar">Yorumlar</a>
+    <a href="index.html#hakkinda">Hakkında</a>
+    <a href="index.html#iletisim" class="nav-cta">Rezervasyon</a>
+  </div>
+  <button class="nav-burger" id="burger">☰</button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="index.html#turlar" onclick="closeMobile()">Turlar</a>
+  <a href="index.html#galeri" onclick="closeMobile()">Galeri</a>
+  <a href="index.html#yorumlar" onclick="closeMobile()">Yorumlar</a>
+  <a href="index.html#hakkinda" onclick="closeMobile()">Hakkında</a>
+  <a href="index.html#iletisim" onclick="closeMobile()" class="nav-cta">Rezervasyon</a>
+</div>
+
+<!-- HERO -->
+<section class="faq-hero">
+  <div class="faq-hero-tag">Yardım Merkezi</div>
+  <h1>Sık Sorulan Sorular</h1>
+  <p>Aklındaki soruların cevabını burada bul. Bulamazsan bir mesaj yeter.</p>
+  <div class="faq-search-wrap">
+    <input type="text" class="faq-search" id="faqSearch" placeholder="Bir soru ara... (ör: vize, ödeme, oda)"/>
+    <span class="faq-search-icon">🔍</span>
+  </div>
+</section>
+
+<!-- FAQ İÇERİK -->
+<section class="faq-main">
+  <div class="faq-container">
+
+    <!-- KATEGORİ 1 -->
+    <div class="faq-category">
+      <div class="faq-category-title">Kurumsal Bilgiler & Güvenlik</div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Lost Voyages resmi bir acente mi?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Evet. Turlarımız <strong>9113 belge numarasıyla TÜRSAB'a kayıtlı ALHARAMAIN UNITED GROUP TURİZM</strong> güvencesi altında düzenlenir. Güvenle rezervasyon yaptırabilirsin.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Turlarınız güvenli mi?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Kesinlikle. Programlarımız her ayrıntısı güvenlik ön planda tutularak planlanır. Transferlerden konaklamalara kadar her adımda huzurla ve güvenle seyahat etmen bizim önceliğimizdir.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KATEGORİ 2 -->
+    <div class="faq-category">
+      <div class="faq-category-title">Katılımcı Profili</div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Yaş sınırı var mı?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Genel olarak <strong>18–50 yaş arasına</strong> hitap ediyoruz. Ancak rotanın zorluk seviyesine ve programın temposuna göre bu aralık değişebilir; her turun sayfasında belirtilir.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Kimler tura katılabilir?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Seyahati bir keşif ve keyif yolculuğu olarak gören herkes. Hayallerini ertelemeyen, yeni yerler görürken maceranın tadını çıkaran ve grup uyumuna değer veren herkes bizden sayılır.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Grup seyahati bana uygun mu?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Seyahat, yüksek tolerans, esneklik ve birlikteliğin getirdiği hoşgörüyle güzelleşen bir deneyimdir. Paylaşımcı ruha ve grubun ortak enerjisine katkı sunmaktan zevk alanlar için Lost Voyages biçilmiş kaftandır.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Tek başıma katılabilir miyim?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Evet! Katılımcılarımızın büyük çoğunluğu tura yalnız geliyor. Turda tanıştıkları kişilerle o kadar yakın dost oluyorlar ki sonraki turlarımıza birlikte kayıt yaptırıyorlar.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KATEGORİ 3 -->
+    <div class="faq-category">
+      <div class="faq-category-title">Kayıt Süreci</div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Nasıl kayıt olabilirim?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Sürecimiz oldukça basit:
+            <div class="step">
+              <span class="step-num">1</span>
+              <span><strong>Form doldur:</strong> İlgilendiğin turun sayfasındaki kayıt formunu doldurarak ilk adımı at.</span>
+            </div>
+            <div class="step">
+              <span class="step-num">2</span>
+              <span><strong>Seni arayalım:</strong> Formunu inceleyip soru işaretlerini gidermek ve tüm detayları konuşmak için seni arıyoruz.</span>
+            </div>
+            <div class="step">
+              <span class="step-num">3</span>
+              <span><strong>Kesin kayıt:</strong> Ön ödeme ve sözleşmeyle yerinizi güvenceye alıyorsunuz.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Gruplar kaç kişilik?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Konforunuzu önemsiyoruz. Gruplarımız <strong>en fazla 20 kişi</strong> ile sınırlıdır. Herkesin birbiriyle kaynaşabildiği, butik ve huzurlu bir ortamda seyahat ediyoruz.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KATEGORİ 4 -->
+    <div class="faq-category">
+      <div class="faq-category-title">Konaklama</div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Oda arkadaşı eşleştirmesi nasıl yapılıyor?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Formdaki bilgilerini ve seyahat tarzını dikkate alarak, enerjisi ve yaşam biçimi en yakın bulduğumuz kişiyle eşleştiriyoruz.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Tek başıma katılırsam single farkı öder miyim?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Seni bir oda arkadaşıyla eşleştirdiğimiz için ek ücret ödemezsin. Ancak tek kişilik odada kalmak istersen ekstra ödeme gerekir — bu tutar her tur sayfasında açıkça belirtilir.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Otelleriniz nasıl?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Bizim için otel sadece konaklama yeri değil, tur konforunun kalbidir. Otellerimizi <strong>temizlik, güvenlik, merkezi konum ve misafir memnuniyeti</strong> kriterlerine göre bizzat seçiyor, konforunuzdan ödün vermeyeceğiniz seçeneklerle çalışıyoruz.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KATEGORİ 5 -->
+    <div class="faq-category">
+      <div class="faq-category-title">Ödeme, İptal & İade</div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Ödemeyi nasıl yapıyoruz?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Kaydını kesinleştirmek için yalnızca belirlenen <strong>ön ödemeyi</strong> yapman yeterli. Kalan tutarı seyahat tarihine kadar <strong>aylık eşit taksitlere</strong> bölebiliyoruz. Tek şartımız toplam tutarın seyahatten önce tamamlanmış olmasıdır.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Türk Lirası ödemelerinde kur nasıl hesaplanıyor?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Ödemeni <strong>Türk Lirası (₺), Dolar ($) veya Euro (€)</strong> olarak yapabilirsin. TL tercih edersen, ödeme günündeki Garanti Bankası döviz satış kuru referans alınır. Böylece kur konusunda her zaman net ve güncel bilgiye sahip olursun.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Kredi kartıyla ödeme yapabilir miyim?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Evet, kredi kartıyla güvenle ödeyebilirsin. Ancak BDDK kararı gereği seyahat acentesi harcamalarında <strong>taksit imkânı kaldırılmıştır</strong>. Kredi kartı ödemeleri yalnızca tek çekim olarak yapılabilmektedir.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Tur iptal olursa param ne oluyor?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Eğer iptal bizden kaynaklanıyorsa ödediğin tutar en kısa sürede <strong>eksiksiz iade edilir</strong>. Misafir kaynaklı iptallerde ise resmî sözleşmede belirtilen iptal koşulları geçerlidir.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Kaydımı yaptırdıktan sonra iptal etmek istersem ne olur?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Hayatta her plan değişebilir, bunu anlıyoruz. İptal koşullarımız:
+            <ul>
+              <li><strong>30 günden fazla kala:</strong> Ödemenin tamamı iade edilir.</li>
+              <li><strong>60–30 gün arası:</strong> 100 € kesinti uygulanır.</li>
+              <li><strong>30 günden az kala:</strong> Kapora iade edilmez.</li>
+            </ul>
+            Tüm koşullar tur öncesi imzalanan resmî hizmet sözleşmesinde belirtilir.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KATEGORİ 6 -->
+    <div class="faq-category">
+      <div class="faq-category-title">Vize & Pasaport</div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Tura katılmak için vize gerekiyor mu?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Her ülkenin vize politikası farklıdır. Her tur sayfasında vize gereklilikleri açıkça belirtilir. Emin olmak için bize sormaktan çekinme.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Pasaportum yok, ne kadar sürede çıkar?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Başvurunuzu tamamladıktan sonra pasaportunuz genellikle <strong>7–10 iş günü</strong> içinde adresinize teslim edilir.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Pasaportumun geçerlilik süresi ne kadar olmalı?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Sorunsuz seyahat için pasaportunun <strong>seyahat bitiş tarihinden itibaren en az 6 ay geçerli</strong> olması şarttır.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Yeşil pasaportumun avantajı olur mu?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Kesinlikle! Yeşil pasaport birçok rotamızda <strong>vizesiz seyahat</strong> imkânı sağlayarak süreci çok daha pratik hale getirir.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Yurt dışı çıkış harcı ne kadar?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Yurt dışı çıkış harcı şu anda <strong>1.250 TL</strong>'dir. Ödeme sürecinde sana rehberlik ediyoruz. Seyahatten hemen önce dijital olarak veya havalimanı cihazlarından kolayca yapılabilir.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Schengen vizesi için destek veriyor musunuz?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Avrupa rotalarımız için bordo pasaport sahiplerinin Schengen vizesi alması gerekir. İstersen bizim yönlendireceğimiz profesyonel vize danışmanlarıyla çalışabilirsin. Vize onayı ilgili ülkenin konsolosluk yetkisinde olduğundan <strong>hiçbir kurum garanti veremez</strong>. Yeşil pasaport sahipleri bu süreçten muaftır.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KATEGORİ 7 -->
+    <div class="faq-category">
+      <div class="faq-category-title">Tur Deneyimi & Operasyon</div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Turlarda rehber oluyor mu?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Evet. Her turda <strong>profesyonel bir yerel rehber</strong> ve her adımda yanında olan bir <strong>Lost Voyages tur lideri</strong> bulunur.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Ekstra ücret öder miyim?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Hayır. Sürpriz ücretler ve gizli masraflar bizim anlayışımızda yok. Tur sayfalarında dahil olan ve olmayanlar açıkça yazılıdır.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Yanıma ne kadar harçlık almalıyım?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Kişisel harcamalar ve hediyelikler için gereken tutar gidilecek ülkeye göre değişir. Tur öncesi toplantımızda bu konuyu detaylıca ele alıyoruz.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Yurt dışı deneyimim yok, zorlanır mıyım?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            İlk kez yurt dışına çıkan pek çok misafirimiz oluyor. Tur liderimiz her adımda yanında. <strong>Dil bilmene de gerek yok</strong> — sadece keşfetmenin tadını çıkar.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Tek başıma katılırsam fotoğraflarımı kim çekecek?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Hiç merak etme! Tur liderimiz ve yeni yol arkadaşların en güzel anları ölümsüzleştirmek için her zaman gönüllü olur. <strong>En iyi karelerle döneceğine emin olabilirsin.</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Serbest zaman oluyor mu?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Kesinlikle. Programlarımızı her anı dolu dolu ama sizi yormayacak şekilde tasarlıyoruz. Şehri birlikte keşfettiğimiz anların yanı sıra, kendi başına sokaklarda gezebileceğin, bir kahve içip anın tadını çıkarabileceğin serbest zaman dilimleri mutlaka var.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Ulaşım araçları konforlu mu?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Gittiğimiz ülkelerde kişi sayımıza özel, <strong>modern, klimalı ve konforlu araçlar</strong> kullanıyoruz. Uzun transferleri keyifli mola duraklarıyla bölerek yolculuğun kendisini de bir deneyime dönüştürüyoruz.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Yurt dışından da katılabilir miyim?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Tabii ki! Bugüne kadar dünyanın pek çok farklı ülkesinden misafirlerimizle yollarımız kesişti. Dünyanın neresinde olursan ol bu topluluğun bir parçası olabilirsin. Tüm turlarımız <strong>İstanbul çıkışlıdır</strong>; Türkiye'nin farklı şehirlerinden gelenler İstanbul'a ulaşarak katılabilir.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Para bozdurma ve SIM kart işlemlerini nasıl yapacağız?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Bu konuda hiç endişelenme. Tur liderimiz eşliğinde en güvenilir döviz bürolarına birlikte gidiyoruz. Hangi ülkede hangi SIM kartın avantajlı olduğunu da tur öncesi seninle paylaşıyoruz.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- No result mesajı -->
+    <div class="faq-no-result" id="noResult">
+      <div style="font-size:2rem">🔍</div>
+      <p>Aradığın soruyu bulamadık.<br>Bize doğrudan sorabilirsin!</p>
+    </div>
+
+    <!-- ALT CTA -->
+    <div class="faq-cta">
+      <h3>Hâlâ sorun mu var?</h3>
+      <p>Cevabını bulamadığın bir soru varsa bir mesaj yeterli.</p>
+      <div class="faq-cta-btns">
+        <a href="https://wa.me/905451706927?text=Merhaba, bir sorum vardı." class="btn-faq-wa" target="_blank">
+          💬 WhatsApp'tan Sor
+        </a>
+        <a href="index.html#turlar" class="btn-faq-tours">
+          ✈️ Turlara Bak
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">Lost Voyages</a>
+      <p>Beklemekten Sıkılmadın mı?</p>
+    </div>
+    <div class="footer-nav">
+      <a href="index.html#turlar">2026 Turları</a>
+      <a href="index.html#hakkinda">Hakkında</a>
+      <a href="sss.html">SSS</a>
+      <a href="index.html#iletisim">İletişim</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://instagram.com/ahmeterenvci" target="_blank" title="Instagram">📸</a>
+      <a href="https://wa.me/905451706927" target="_blank" title="WhatsApp">💬</a>
+      <a href="https://youtube.com/@lostvoyages" target="_blank" title="YouTube">▶️</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Lost Voyages · iletisim@lostvoyages.com</p>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/905451706927?text=Merhaba, bir sorum vardı." class="wa-float" target="_blank" title="WhatsApp'tan Ulaş">
+  <svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="js/main.js"></script>
+<script>
+  // Accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('active');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+      if (!isOpen) item.classList.add('active');
+    });
+  });
+
+  // Arama
+  const searchInput = document.getElementById('faqSearch');
+  const noResult = document.getElementById('noResult');
+
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.toLowerCase().trim();
+    let visibleCount = 0;
+
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const text = item.textContent.toLowerCase();
+      const match = !q || text.includes(q);
+      item.classList.toggle('hidden', !match);
+      if (match) visibleCount++;
+    });
+
+    // Kategori başlıklarını gizle eğer altında görünen soru yoksa
+    document.querySelectorAll('.faq-category').forEach(cat => {
+      const hasVisible = [...cat.querySelectorAll('.faq-item')].some(i => !i.classList.contains('hidden'));
+      cat.style.display = hasVisible ? '' : 'none';
+    });
+
+    noResult.classList.toggle('show', visibleCount === 0);
+  });
+
+  // Nav mobile
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  if (burger) burger.addEventListener('click', () => mobileMenu.classList.add('open'));
+  if (mobileClose) mobileClose.addEventListener('click', closeMobile);
+
+  document.fonts.ready.then(() => document.documentElement.classList.add('fonts-ready'));
+</script>
+</body>
+</html>
