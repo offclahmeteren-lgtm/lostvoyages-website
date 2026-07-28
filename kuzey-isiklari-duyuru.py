@@ -134,24 +134,27 @@ def build(with_dates, out):
     cv = canvas.Canvas(out, pagesize=A4)
 
     # ══════════════════════════════════════════════════════════════════════════
-    # SAYFA 1 — KOLAJ KAPAK (fiyatsız)
+    # SAYFA 1 — KOLAJ KAPAK (fiyatsız, yüksek çözünürlük)
     # ══════════════════════════════════════════════════════════════════════════
+    SS = 6  # supersample çarpanı — netlik için
     def img_circle(c, path, ccx, ccy, r, y_anchor=0.5):
         try:
             im = PILImage.open(path).convert("RGB")
-            d = int(r*2*3)
+            d = int(r*2*SS)
             s2 = max(d/im.width, d/im.height)
             nw, nh = int(im.width*s2), int(im.height*s2)
             im = im.resize((nw,nh), PILImage.LANCZOS)
             l=(nw-d)//2; t=int((nh-d)*y_anchor)
             im = im.crop((l,t,l+d,t+d))
+            im = ImageEnhance.Sharpness(im).enhance(1.18)
+            im = ImageEnhance.Contrast(im).enhance(1.05)
             mask = PILImage.new("L",(d,d),0)
-            ImageDraw.Draw(mask).ellipse((0,0,d,d), fill=255)
+            ImageDraw.Draw(mask).ellipse((0,0,d-1,d-1), fill=255)
             out_im = PILImage.new("RGBA",(d,d),(0,0,0,0))
             out_im.paste(im,(0,0),mask)
-            # ince altın çerçeve
             ring = ImageDraw.Draw(out_im)
-            ring.ellipse((2,2,d-3,d-3), outline=(232,173,24,255), width=6)
+            rw = max(3, int(d*0.013))
+            ring.ellipse((rw//2, rw//2, d-1-rw//2, d-1-rw//2), outline=(232,173,24,255), width=rw)
             buf=io.BytesIO(); out_im.save(buf,"PNG"); buf.seek(0)
             c.drawImage(ImageReader(buf), ccx-r, ccy-r, r*2, r*2, mask="auto")
         except Exception as e: print(f"[circ] {path}: {e}")
@@ -170,76 +173,80 @@ def build(with_dates, out):
         ("11","20 – 27 Mart 2027",       None),
         ("12","28 Mart – 04 Nisan 2027", None),
     ]
-    # tam lacivert zemin + üstte soluk aurora dokusu
-    R(cv, 0, 0, W, H, fill=NAVY)
-    img_box(cv, f"{IMGS}/gallery/enson-aurora-orman.jpg", 0, H-9.5*cm, W, 9.5*cm, q=88, y_anchor=0.25)
-    cv.saveState(); cv.setFillColor(NAVY); cv.setFillAlpha(0.62)
-    cv.rect(0, H-9.5*cm, W, 9.5*cm, fill=1, stroke=0); cv.restoreState()
+
+    # ── tam sayfa aurora zemin + koyu degrade ────────────────────────────────
+    try:
+        bg = PILImage.open(f"{IMGS}/gallery/enson-aurora-orman.jpg").convert("RGB")
+        pw, ph = 1240, 1754
+        s2 = max(pw/bg.width, ph/bg.height)
+        bg = bg.resize((int(bg.width*s2), int(bg.height*s2)), PILImage.LANCZOS)
+        l=(bg.width-pw)//2; bg = bg.crop((l, 0, l+pw, ph))
+        ov = PILImage.new("L",(pw,ph),0); od = ImageDraw.Draw(ov)
+        for row in range(ph):
+            f = row/ph
+            a = int((0.30 + 0.55*(f**0.8)) * 255)   # üst hafif, alt koyu
+            od.line([(0,row),(pw,row)], fill=a)
+        navy_l = PILImage.new("RGB",(pw,ph),(27,23,48))
+        bg = PILImage.composite(navy_l, bg, ov)
+        buf=io.BytesIO(); bg.save(buf,"JPEG",quality=90); buf.seek(0)
+        cv.drawImage(ImageReader(buf), 0, 0, W, H)
+    except Exception as e:
+        R(cv, 0, 0, W, H, fill=NAVY); print(f"[bg] {e}")
     R(cv, 0, H-3*mm, W, 3*mm, fill=GOLD)
 
     G = f"{IMGS}/gallery"
+
+    # ── başlık bloğu ─────────────────────────────────────────────────────────
+    reklame(cv, "Lost Voyages", W/2, H-0.95*cm, 13, rgba=(232,173,24,255))
+    L(cv, W/2-3.4*cm, H-1.75*cm, W/2+3.4*cm, H-1.75*cm, GOLD_A, 0.8)
+    reklame(cv, "Kuzey Işıkları", W/2, H-2.35*cm, 40, rgba=(255,255,255,255))
+    T(cv,"G   E   Z   İ   L   E   R   İ", W/2, H-5.3*cm,"M-Bold",14,GOLD_A,"center")
+    L(cv, W/2-3.4*cm, H-5.75*cm, W/2+3.4*cm, H-5.75*cm, GOLD_A, 0.8)
+    T(cv,"Moskova  ·  Murmansk  ·  St. Petersburg", W/2, H-6.55*cm,"M-SemiBold",12.5,WHITE,"center")
+    T(cv,"7 Gece 8 Gün   ·   Maks. 15 Kişi", W/2, H-7.35*cm,"M-Regular",10.5,HexColor("#E8D898"),"center")
+
     # üst köşe daireleri
-    img_circle(cv, f"{G}/aurora-1.jpg",              2.6*cm,  H-2.9*cm, 2.0*cm)
-    img_circle(cv, f"{G}/husky.jpg",                 W-2.6*cm, H-2.9*cm, 2.0*cm)
+    img_circle(cv, f"{G}/aurora-1.jpg",  2.65*cm,  H-2.9*cm, 2.05*cm)
+    img_circle(cv, f"{G}/husky.jpg",     W-2.65*cm, H-2.9*cm, 2.05*cm)
 
-    # başlık
-    reklame(cv, "Lost Voyages", W/2, H-1.0*cm, 13, rgba=(232,173,24,255))
-    reklame(cv, "Kuzey Işıkları", W/2, H-2.6*cm, 38, rgba=(255,255,255,255))
-    T(cv,"G E Z İ L E R İ", W/2, H-5.4*cm,"M-Bold",13,GOLD_A,"center")
-    T(cv,"Moskova  ·  Murmansk  ·  St. Petersburg", W/2, H-6.3*cm,"M-SemiBold",12,WHITE,"center")
-    T(cv,"7 Gece 8 Gün   ·   Maks. 15 Kişi", W/2, H-7.1*cm,"M-Regular",10.5,HexColor("#E8D898"),"center")
-
-    # yan daireler
-    img_circle(cv, f"{G}/enson-kizilmeydan-grup.jpg", 2.4*cm, H-10.6*cm, 1.9*cm)
-    img_circle(cv, f"{G}/ki-new-1.jpg",               2.3*cm, H-15.0*cm, 1.8*cm)
-    img_circle(cv, f"{G}/ki-new-4.jpg",               W-2.4*cm, H-10.6*cm, 1.9*cm)
-    img_circle(cv, f"{G}/ki-aurora-gol.jpg",          W-2.3*cm, H-15.0*cm, 1.8*cm)
-
-    # merkez kutu: tarihler veya program
-    bx1, bx2 = 4.9*cm, W-4.9*cm
+    # ── merkez tarih paneli ───────────────────────────────────────────────────
+    bx1, bx2 = 5.0*cm, W-5.0*cm
     bw = bx2 - bx1
-    if with_dates:
-        rows = [(n, d, tg) for n, d, tg in DATES]
-        rh = 0.62*cm
-        box_title = "Gezi Tarihleri"
-    else:
-        rows = [
-            ("1","Moskova — Varış & Otele Yerleşme", None),
-            ("2","Kızıl Meydan · GUM · Noel Pazarları", None),
-            ("3","Murmansk'a Uçuş & İlk Işık Avı", "AURORA"),
-            ("4","Husky Parkı & Lapland Macerası", None),
-            ("5","Alyosha · Buzkıran · Sami Köyü", "AURORA"),
-            ("6","Murmansk → St. Petersburg", None),
-            ("7","Hermitage · Kanallar · Keşif", None),
-            ("8","St. Petersburg → İstanbul", None),
-        ]
-        rh = 0.78*cm
-        box_title = "Gezi Programı"
-
-    bh_total = 1.45*cm + len(rows)*rh + 0.5*cm
-    btop = H - 8.0*cm
-    R(cv, bx1, btop-bh_total, bw, bh_total, fill=HexColor("#241F3D"), stroke=GOLD, r=10, sw=1.2)
-    reklame(cv, box_title, W/2, btop-0.25*cm, 15, rgba=(232,173,24,255))
-    yy = btop - 1.45*cm
-    for n, d, tg in rows:
-        T(cv, f"{n}.", bx1+0.55*cm, yy-0.32*cm,"M-Bold",9.5,GOLD_A)
-        T(cv, d, bx1+1.15*cm, yy-0.32*cm,"M-SemiBold",10,WHITE)
+    rh = 0.63*cm
+    bh_total = 1.5*cm + len(DATES)*rh + 0.45*cm
+    btop = H - 8.1*cm
+    # çift altın çerçeve
+    R(cv, bx1-0.1*cm, btop-bh_total-0.1*cm, bw+0.2*cm, bh_total+0.2*cm, stroke=HexColor("#8A6A10"), r=12, sw=0.8)
+    R(cv, bx1, btop-bh_total, bw, bh_total, fill=HexColor("#221D3C"), stroke=GOLD_A, r=10, sw=1.4)
+    reklame(cv, "Gezi Tarihleri", W/2, btop-0.28*cm, 16, rgba=(232,173,24,255))
+    yy = btop - 1.5*cm
+    for n, d, tg in DATES:
+        T(cv, f"{n}.", bx1+0.6*cm, yy-0.32*cm,"M-Bold",10,GOLD_A)
+        T(cv, d, bx1+1.3*cm, yy-0.32*cm,"M-SemiBold",10.5,WHITE)
         if tg:
-            tw2 = cv.stringWidth(tg,"M-Bold",6.8) + 0.4*cm
-            R(cv, bx2-tw2-0.4*cm, yy-0.44*cm, tw2, 0.36*cm, fill=HexColor("#3A3160"), stroke=GOLD_A, r=3, sw=0.6)
-            T(cv, tg, bx2-tw2/2-0.4*cm, yy-0.325*cm,"M-Bold",6.8,GOLD_A,"center")
+            tw2 = cv.stringWidth(tg,"M-Bold",7) + 0.44*cm
+            R(cv, bx2-tw2-0.45*cm, yy-0.44*cm, tw2, 0.38*cm, fill=HexColor("#3A3160"), stroke=GOLD_A, r=3, sw=0.6)
+            T(cv, tg, bx2-tw2/2-0.45*cm, yy-0.315*cm,"M-Bold",7,GOLD_A,"center")
         yy -= rh
 
-    # alt bölge: büyük merkez aurora-grup + yan ve köşe daireleri
-    img_circle(cv, f"{G}/ki-aurora-grup.jpg",   W/2,      6.9*cm, 3.0*cm)
-    img_circle(cv, f"{G}/enson-geyik-grup.jpg", 3.7*cm,   7.7*cm, 2.2*cm)
-    img_circle(cv, f"{G}/ki-sami-selfie.jpg",   W-3.7*cm, 7.7*cm, 2.2*cm)
-    img_circle(cv, f"{G}/ki-kar-cift.jpg",      2.9*cm,   2.7*cm, 1.8*cm)
-    img_circle(cv, f"{G}/buz-yuzme.jpg",        W-2.9*cm, 2.7*cm, 1.8*cm)
+    # yan daireler (panelin iki yanı)
+    img_circle(cv, f"{G}/enson-kizilmeydan-grup.jpg", 2.5*cm,  H-10.7*cm, 1.95*cm)
+    img_circle(cv, f"{G}/ki-new-1.jpg",               2.4*cm,  H-15.1*cm, 1.85*cm)
+    img_circle(cv, f"{G}/ki-new-4.jpg",               W-2.5*cm, H-10.7*cm, 1.95*cm)
+    img_circle(cv, f"{G}/ki-aurora-gol.jpg",          W-2.4*cm, H-15.1*cm, 1.85*cm)
 
+    # ── alt bölge: aynı hizada üçlü + köşe daireleri ─────────────────────────
+    img_circle(cv, f"{G}/ki-aurora-grup.jpg",   W/2,      6.45*cm, 2.95*cm)
+    img_circle(cv, f"{G}/enson-geyik-grup.jpg", 3.55*cm,  7.3*cm, 2.15*cm)
+    img_circle(cv, f"{G}/ki-sami-selfie.jpg",   W-3.55*cm, 7.3*cm, 2.15*cm)
+    img_circle(cv, f"{G}/ki-kar-cift.jpg",      2.75*cm,   2.55*cm, 1.75*cm)
+    img_circle(cv, f"{G}/buz-yuzme.jpg",        W-2.75*cm, 2.55*cm, 1.75*cm)
+
+    L(cv, W/2-4.6*cm, 1.15*cm, W/2+4.6*cm, 1.15*cm, HexColor("#8A6A10"), 0.6)
     T(cv,"lostvoyages.com   ·   @ahmeterenvci   ·   TÜRSAB 9113",
-      W/2, 0.55*cm,"M-Regular",8.5,HexColor("#c0b8a0"),"center")
+      W/2, 0.55*cm,"M-Regular",8.5,HexColor("#d8cba8"),"center")
     cv.showPage()
+
 
     footer(cv); cv.showPage()
 
@@ -490,4 +497,3 @@ def build(with_dates, out):
 
 
 build(True,  OUT_DATED)
-build(False, OUT_NODATE)
