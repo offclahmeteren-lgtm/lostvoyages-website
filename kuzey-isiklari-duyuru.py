@@ -134,31 +134,86 @@ def build(with_dates, out):
     cv = canvas.Canvas(out, pagesize=A4)
 
     # ══════════════════════════════════════════════════════════════════════════
-    # SAYFA 1 — KOLAJ KAPAK (fiyatsız, yüksek çözünürlük)
+    # SAYFA 1 — KOLAJ KAPAK (300 DPI tek parça kompozisyon)
     # ══════════════════════════════════════════════════════════════════════════
-    SS = 6  # supersample çarpanı — netlik için
-    def img_circle(c, path, ccx, ccy, r, y_anchor=0.5):
-        try:
-            im = PILImage.open(path).convert("RGB")
-            d = int(r*2*SS)
-            s2 = max(d/im.width, d/im.height)
-            nw, nh = int(im.width*s2), int(im.height*s2)
-            im = im.resize((nw,nh), PILImage.LANCZOS)
-            l=(nw-d)//2; t=int((nh-d)*y_anchor)
-            im = im.crop((l,t,l+d,t+d))
-            im = ImageEnhance.Sharpness(im).enhance(1.18)
-            im = ImageEnhance.Contrast(im).enhance(1.05)
-            mask = PILImage.new("L",(d,d),0)
-            ImageDraw.Draw(mask).ellipse((0,0,d-1,d-1), fill=255)
-            out_im = PILImage.new("RGBA",(d,d),(0,0,0,0))
-            out_im.paste(im,(0,0),mask)
-            ring = ImageDraw.Draw(out_im)
-            rw = max(3, int(d*0.013))
-            ring.ellipse((rw//2, rw//2, d-1-rw//2, d-1-rw//2), outline=(232,173,24,255), width=rw)
-            buf=io.BytesIO(); out_im.save(buf,"PNG"); buf.seek(0)
-            c.drawImage(ImageReader(buf), ccx-r, ccy-r, r*2, r*2, mask="auto")
-        except Exception as e: print(f"[circ] {path}: {e}")
+    from PIL import ImageFilter
+    PW, PH = 2480, 3508
+    F_REK   = lambda px: ImageFont.truetype(REKLAME, px)
+    F_BOLD  = lambda px: ImageFont.truetype(f"{FONTS}/Montserrat-Bold.ttf", px)
+    F_SEMI  = lambda px: ImageFont.truetype(f"{FONTS}/Montserrat-SemiBold.ttf", px)
+    F_REG   = lambda px: ImageFont.truetype(f"{FONTS}/Montserrat-Regular.ttf", px)
+    GOLD_RGB, GOLDA_RGB = (200,148,14), (232,173,24)
+    CREAM_RGB, NAVYP = (232,216,152), (34,29,60)
 
+    def cover_crop(img, w, h, y_anchor=0.5):
+        s2 = max(w/img.width, h/img.height)
+        img = img.resize((int(img.width*s2), int(img.height*s2)), PILImage.LANCZOS)
+        l = (img.width-w)//2; t = int((img.height-h)*y_anchor)
+        return img.crop((l, t, l+w, t+h))
+
+    # ── zemin ────────────────────────────────────────────────────────────────
+    page = cover_crop(PILImage.open(f"{IMGS}/gallery/enson-aurora-orman.jpg").convert("RGB"), PW, PH, 0.4)
+    page = ImageEnhance.Color(page).enhance(1.18)
+    page = ImageEnhance.Contrast(page).enhance(1.06)
+    ov = PILImage.new("L",(PW,PH),0); od = ImageDraw.Draw(ov)
+    for row in range(PH):
+        f = row/PH
+        od.line([(0,row),(PW,row)], fill=int((0.26 + 0.56*(f**0.85)) * 255))
+    page = PILImage.composite(PILImage.new("RGB",(PW,PH),(24,20,44)), page, ov)
+    D = ImageDraw.Draw(page, "RGBA")
+
+    def ctext(draw_layer, txt, cx, cy, font, fill, tracking=0):
+        """merkezli metin; tracking>0 ise harf arasi bosluk px"""
+        if tracking:
+            widths = [draw_layer.textbbox((0,0), ch, font=font)[2] for ch in txt]
+            total = sum(widths) + tracking*(len(txt)-1)
+            x = cx - total/2
+            for ch, wd in zip(txt, widths):
+                draw_layer.text((x, cy), ch, font=font, fill=fill, anchor="lm")
+                x += wd + tracking
+        else:
+            draw_layer.text((cx, cy), txt, font=font, fill=fill, anchor="mm")
+
+    def glow_text(txt, cx, cy, font, fill, glow_rgb, blur=22, alpha=160):
+        lay = PILImage.new("RGBA",(PW,PH),(0,0,0,0))
+        ld = ImageDraw.Draw(lay)
+        ld.text((cx,cy), txt, font=font, fill=glow_rgb+(alpha,), anchor="mm")
+        lay = lay.filter(ImageFilter.GaussianBlur(blur))
+        page.paste(lay, (0,0), lay)
+        D.text((cx,cy), txt, font=font, fill=fill, anchor="mm")
+
+    def circle(path, ccx, ccy, r, y_anchor=0.5):
+        d = r*2
+        im = cover_crop(PILImage.open(path).convert("RGB"), d, d, y_anchor)
+        im = ImageEnhance.Sharpness(im).enhance(1.2)
+        im = ImageEnhance.Contrast(im).enhance(1.06)
+        im = ImageEnhance.Color(im).enhance(1.1)
+        # gölge
+        sh = PILImage.new("RGBA",(PW,PH),(0,0,0,0))
+        ImageDraw.Draw(sh).ellipse((ccx-r, ccy-r+14, ccx+r, ccy+r+14), fill=(0,0,0,120))
+        sh = sh.filter(ImageFilter.GaussianBlur(28))
+        page.paste(sh, (0,0), sh)
+        # daire + çift halka
+        mask = PILImage.new("L",(d,d),0)
+        ImageDraw.Draw(mask).ellipse((0,0,d-1,d-1), fill=255)
+        page.paste(im, (ccx-r, ccy-r), mask)
+        D.ellipse((ccx-r, ccy-r, ccx+r, ccy+r), outline=GOLDA_RGB+(255,), width=8)
+        D.ellipse((ccx-r-14, ccy-r-14, ccx+r+14, ccy+r+14), outline=GOLDA_RGB+(110,), width=3)
+
+    # ── üst bant ─────────────────────────────────────────────────────────────
+    D.rectangle((0,0,PW,34), fill=GOLD_RGB)
+    ctext(D, "Lost Voyages", PW//2, 128, F_REK(86), GOLDA_RGB)
+    D.line((PW//2-400, 218, PW//2+400, 218), fill=GOLDA_RGB+(200,), width=3)
+    glow_text("Kuzey Işıkları", PW//2, 420, F_REK(250), (255,255,255), (120,220,170), blur=34, alpha=110)
+    ctext(D, "GEZİLERİ", PW//2, 640, F_BOLD(66), GOLDA_RGB, tracking=46)
+    D.line((PW//2-400, 730, PW//2+400, 730), fill=GOLDA_RGB+(200,), width=3)
+    ctext(D, "Moskova  ·  Murmansk  ·  St. Petersburg", PW//2, 812, F_SEMI(72), (255,255,255))
+    ctext(D, "7 Gece 8 Gün   ·   Maks. 15 Kişi", PW//2, 905, F_REG(54), CREAM_RGB)
+
+    circle(f"{IMGS}/gallery/aurora-1.jpg",  318, 345, 242)
+    circle(f"{IMGS}/gallery/husky.jpg",     PW-318, 345, 242)
+
+    # ── merkez panel ─────────────────────────────────────────────────────────
     DATES = [
         ("1","05 – 12 Kasım 2026",       None),
         ("2","05 – 12 Aralık 2026",      None),
@@ -173,79 +228,50 @@ def build(with_dates, out):
         ("11","20 – 27 Mart 2027",       None),
         ("12","28 Mart – 04 Nisan 2027", None),
     ]
-
-    # ── tam sayfa aurora zemin + koyu degrade ────────────────────────────────
-    try:
-        bg = PILImage.open(f"{IMGS}/gallery/enson-aurora-orman.jpg").convert("RGB")
-        pw, ph = 1240, 1754
-        s2 = max(pw/bg.width, ph/bg.height)
-        bg = bg.resize((int(bg.width*s2), int(bg.height*s2)), PILImage.LANCZOS)
-        l=(bg.width-pw)//2; bg = bg.crop((l, 0, l+pw, ph))
-        ov = PILImage.new("L",(pw,ph),0); od = ImageDraw.Draw(ov)
-        for row in range(ph):
-            f = row/ph
-            a = int((0.30 + 0.55*(f**0.8)) * 255)   # üst hafif, alt koyu
-            od.line([(0,row),(pw,row)], fill=a)
-        navy_l = PILImage.new("RGB",(pw,ph),(27,23,48))
-        bg = PILImage.composite(navy_l, bg, ov)
-        buf=io.BytesIO(); bg.save(buf,"JPEG",quality=90); buf.seek(0)
-        cv.drawImage(ImageReader(buf), 0, 0, W, H)
-    except Exception as e:
-        R(cv, 0, 0, W, H, fill=NAVY); print(f"[bg] {e}")
-    R(cv, 0, H-3*mm, W, 3*mm, fill=GOLD)
-
-    G = f"{IMGS}/gallery"
-
-    # ── başlık bloğu ─────────────────────────────────────────────────────────
-    reklame(cv, "Lost Voyages", W/2, H-0.95*cm, 13, rgba=(232,173,24,255))
-    L(cv, W/2-3.4*cm, H-1.75*cm, W/2+3.4*cm, H-1.75*cm, GOLD_A, 0.8)
-    reklame(cv, "Kuzey Işıkları", W/2, H-2.35*cm, 40, rgba=(255,255,255,255))
-    T(cv,"G   E   Z   İ   L   E   R   İ", W/2, H-5.3*cm,"M-Bold",14,GOLD_A,"center")
-    L(cv, W/2-3.4*cm, H-5.75*cm, W/2+3.4*cm, H-5.75*cm, GOLD_A, 0.8)
-    T(cv,"Moskova  ·  Murmansk  ·  St. Petersburg", W/2, H-6.55*cm,"M-SemiBold",12.5,WHITE,"center")
-    T(cv,"7 Gece 8 Gün   ·   Maks. 15 Kişi", W/2, H-7.35*cm,"M-Regular",10.5,HexColor("#E8D898"),"center")
-
-    # üst köşe daireleri
-    img_circle(cv, f"{G}/aurora-1.jpg",  2.65*cm,  H-2.9*cm, 2.05*cm)
-    img_circle(cv, f"{G}/husky.jpg",     W-2.65*cm, H-2.9*cm, 2.05*cm)
-
-    # ── merkez tarih paneli ───────────────────────────────────────────────────
-    bx1, bx2 = 5.0*cm, W-5.0*cm
-    bw = bx2 - bx1
-    rh = 0.63*cm
-    bh_total = 1.5*cm + len(DATES)*rh + 0.45*cm
-    btop = H - 8.1*cm
-    # çift altın çerçeve
-    R(cv, bx1-0.1*cm, btop-bh_total-0.1*cm, bw+0.2*cm, bh_total+0.2*cm, stroke=HexColor("#8A6A10"), r=12, sw=0.8)
-    R(cv, bx1, btop-bh_total, bw, bh_total, fill=HexColor("#221D3C"), stroke=GOLD_A, r=10, sw=1.4)
-    reklame(cv, "Gezi Tarihleri", W/2, btop-0.28*cm, 16, rgba=(232,173,24,255))
-    yy = btop - 1.5*cm
-    for n, d, tg in DATES:
-        T(cv, f"{n}.", bx1+0.6*cm, yy-0.32*cm,"M-Bold",10,GOLD_A)
-        T(cv, d, bx1+1.3*cm, yy-0.32*cm,"M-SemiBold",10.5,WHITE)
+    px1, px2, ptop = 596, PW-596, 1020
+    rh = 76
+    pbot = ptop + 190 + len(DATES)*rh + 52
+    # panel gölgesi
+    psh = PILImage.new("RGBA",(PW,PH),(0,0,0,0))
+    ImageDraw.Draw(psh).rounded_rectangle((px1,ptop+16,px2,pbot+16), 40, fill=(0,0,0,130))
+    psh = psh.filter(ImageFilter.GaussianBlur(30))
+    page.paste(psh,(0,0),psh)
+    D.rounded_rectangle((px1,ptop,px2,pbot), 40, fill=NAVYP+(238,), outline=GOLDA_RGB+(255,), width=5)
+    D.rounded_rectangle((px1-16,ptop-16,px2+16,pbot+16), 52, outline=(138,106,16,180), width=3)
+    ctext(D, "Gezi Tarihleri", (px1+px2)//2, ptop+100, F_REK(96), GOLDA_RGB)
+    D.line(((px1+px2)//2-330, ptop+168, (px1+px2)//2+330, ptop+168), fill=GOLDA_RGB+(130,), width=2)
+    yy = ptop + 190
+    for n, dt, tg in DATES:
+        D.text((px1+96, yy+rh//2), f"{n}.", font=F_BOLD(52), fill=GOLDA_RGB, anchor="rm")
+        D.text((px1+128, yy+rh//2), dt, font=F_SEMI(54), fill=(255,255,255), anchor="lm")
         if tg:
-            tw2 = cv.stringWidth(tg,"M-Bold",7) + 0.44*cm
-            R(cv, bx2-tw2-0.45*cm, yy-0.44*cm, tw2, 0.38*cm, fill=HexColor("#3A3160"), stroke=GOLD_A, r=3, sw=0.6)
-            T(cv, tg, bx2-tw2/2-0.45*cm, yy-0.315*cm,"M-Bold",7,GOLD_A,"center")
-        yy -= rh
+            fnt = F_BOLD(34)
+            tw = D.textbbox((0,0), tg, font=fnt)[2]
+            pr, pl = px2-52, px2-52-tw-56
+            D.rounded_rectangle((pl, yy+8, pr, yy+rh-10), 14, fill=(58,49,96,255), outline=GOLDA_RGB+(220,), width=2)
+            D.text(((pl+pr)//2, yy+rh//2-1), tg, font=fnt, fill=GOLDA_RGB, anchor="mm")
+        yy += rh
 
-    # yan daireler (panelin iki yanı)
-    img_circle(cv, f"{G}/enson-kizilmeydan-grup.jpg", 2.5*cm,  H-10.7*cm, 1.95*cm)
-    img_circle(cv, f"{G}/ki-new-1.jpg",               2.4*cm,  H-15.1*cm, 1.85*cm)
-    img_circle(cv, f"{G}/ki-new-4.jpg",               W-2.5*cm, H-10.7*cm, 1.95*cm)
-    img_circle(cv, f"{G}/ki-aurora-gol.jpg",          W-2.4*cm, H-15.1*cm, 1.85*cm)
+    # ── yan daireler ─────────────────────────────────────────────────────────
+    circle(f"{IMGS}/gallery/enson-kizilmeydan-grup.jpg", 300, 1290, 232)
+    circle(f"{IMGS}/gallery/ki-new-1.jpg",               286, 1800, 218)
+    circle(f"{IMGS}/gallery/ki-new-4.jpg",               PW-300, 1290, 232)
+    circle(f"{IMGS}/gallery/ki-aurora-gol.jpg",          PW-286, 1800, 218)
 
-    # ── alt bölge: aynı hizada üçlü + köşe daireleri ─────────────────────────
-    img_circle(cv, f"{G}/ki-aurora-grup.jpg",   W/2,      6.45*cm, 2.95*cm)
-    img_circle(cv, f"{G}/enson-geyik-grup.jpg", 3.55*cm,  7.3*cm, 2.15*cm)
-    img_circle(cv, f"{G}/ki-sami-selfie.jpg",   W-3.55*cm, 7.3*cm, 2.15*cm)
-    img_circle(cv, f"{G}/ki-kar-cift.jpg",      2.75*cm,   2.55*cm, 1.75*cm)
-    img_circle(cv, f"{G}/buz-yuzme.jpg",        W-2.75*cm, 2.55*cm, 1.75*cm)
+    # ── alt bölge ────────────────────────────────────────────────────────────
+    circle(f"{IMGS}/gallery/ki-aurora-grup.jpg",   PW//2, 2745, 352)
+    circle(f"{IMGS}/gallery/enson-geyik-grup.jpg", 432, 2640, 256)
+    circle(f"{IMGS}/gallery/ki-sami-selfie.jpg",   PW-432, 2640, 256)
+    circle(f"{IMGS}/gallery/ki-kar-cift.jpg",      330, 3175, 208)
+    circle(f"{IMGS}/gallery/buz-yuzme.jpg",        PW-330, 3175, 208)
 
-    L(cv, W/2-4.6*cm, 1.15*cm, W/2+4.6*cm, 1.15*cm, HexColor("#8A6A10"), 0.6)
-    T(cv,"lostvoyages.com   ·   @ahmeterenvci   ·   TÜRSAB 9113",
-      W/2, 0.55*cm,"M-Regular",8.5,HexColor("#d8cba8"),"center")
+    D.line((PW//2-540, 3352, PW//2+540, 3352), fill=(138,106,16,220), width=2)
+    ctext(D, "lostvoyages.com   ·   @ahmeterenvci   ·   TÜRSAB 9113", PW//2, 3415, F_REG(44), (216,203,168))
+
+    buf = io.BytesIO(); page.save(buf, "JPEG", quality=92); buf.seek(0)
+    cv.drawImage(ImageReader(buf), 0, 0, W, H)
     cv.showPage()
+
 
 
     footer(cv); cv.showPage()
