@@ -133,28 +133,28 @@ def build(with_dates, out):
     global cv
     cv = canvas.Canvas(out, pagesize=A4)
 
-    # ══════════════════════════════════════════════════════════════════════════════
-    # SAYFA 1 — TARİHLER
-    # ══════════════════════════════════════════════════════════════════════════════
-    page_bg(cv)
-    HERO_H = H * 0.40
-    IY = H - HERO_H
-    img_box(cv, f"{IMGS}/gallery/enson-aurora-orman.jpg", 0, IY, W, HERO_H, q=92, y_anchor=0.35)
-    cv.drawImage(gradient(int(W*1.5), int(HERO_H*1.5), 0.85), 0, IY, W, HERO_H, mask="auto")
-    R(cv, 0, H-3*mm, W, 3*mm, fill=GOLD)
-    reklame(cv, "Lost Voyages", W/2, H - 7*mm, 13, rgba=(232,173,24,255))
-
-    _, th = reklame(cv, "Kuzey Işıkları", W/2, IY + 4.9*cm, 40, rgba=(255,255,255,255))
-    T(cv,"M O S K O V A   ·   M U R M A N S K   ·   S T .  P E T E R S B U R G",
-      W/2, IY+2.65*cm,"M-Light",9.5,WHITE,"center")
-    T(cv,"7 Gece / 8 Gün   ·   Maks. 15 Kişi", W/2, IY+1.7*cm,"M-Regular",9.5,HexColor("#E8D898"),"center")
-    R(cv, 0, IY-5*mm, W, 5*mm, fill=GOLD)
-
-    cy = IY - 5*mm - 0.85*cm
-    T(cv, "2026 – 2027  G E Z İ   T A R İ H L E R İ" if with_dates
-          else "8  G Ü N L Ü K   P R O G R A M",
-      W/2, cy,"M-Bold",10.5,GOLD,"center")
-    cy -= 0.8*cm
+    # ══════════════════════════════════════════════════════════════════════════
+    # SAYFA 1 — KOLAJ KAPAK (fiyatsız)
+    # ══════════════════════════════════════════════════════════════════════════
+    def img_circle(c, path, ccx, ccy, r, y_anchor=0.5):
+        try:
+            im = PILImage.open(path).convert("RGB")
+            d = int(r*2*3)
+            s2 = max(d/im.width, d/im.height)
+            nw, nh = int(im.width*s2), int(im.height*s2)
+            im = im.resize((nw,nh), PILImage.LANCZOS)
+            l=(nw-d)//2; t=int((nh-d)*y_anchor)
+            im = im.crop((l,t,l+d,t+d))
+            mask = PILImage.new("L",(d,d),0)
+            ImageDraw.Draw(mask).ellipse((0,0,d,d), fill=255)
+            out_im = PILImage.new("RGBA",(d,d),(0,0,0,0))
+            out_im.paste(im,(0,0),mask)
+            # ince altın çerçeve
+            ring = ImageDraw.Draw(out_im)
+            ring.ellipse((2,2,d-3,d-3), outline=(232,173,24,255), width=6)
+            buf=io.BytesIO(); out_im.save(buf,"PNG"); buf.seek(0)
+            c.drawImage(ImageReader(buf), ccx-r, ccy-r, r*2, r*2, mask="auto")
+        except Exception as e: print(f"[circ] {path}: {e}")
 
     DATES = [
         ("1","05 – 12 Kasım 2026",       None),
@@ -170,49 +170,76 @@ def build(with_dates, out):
         ("11","20 – 27 Mart 2027",       None),
         ("12","28 Mart – 04 Nisan 2027", None),
     ]
-    PROGRAM = [
-        ("1","Moskova — Varış & Otele Yerleşme",            None),
-        ("2","Moskova — Kızıl Meydan, GUM, Noel Pazarları", None),
-        ("3","Murmansk'a Uçuş & İlk Işık Avı",              "AURORA"),
-        ("4","Husky Parkı & Lapland Macerası",              None),
-        ("5","Alyosha · Lenin Buzkıranı · Sami Köyü",       "AURORA"),
-        ("6","Murmansk → St. Petersburg",                   None),
-        ("7","Hermitage · Kanallar · Serbest Zaman",        None),
-        ("8","St. Petersburg → İstanbul — Dönüş",           None),
-    ]
-    rows = DATES if with_dates else PROGRAM
-    ROW  = 0.78*cm if with_dates else 1.13*cm
-    for i,(num, dt, tag) in enumerate(rows):
-        ry = cy - ROW
-        bg = WARM if i % 2 == 0 else WHITE
-        R(cv, LM, ry, CW, ROW, fill=bg, stroke=BORDER)
-        R(cv, LM, ry, 3.5, ROW, fill=GOLD_A if tag else BORDER)
-        bx = 0.62*cm if with_dates else 0.78*cm
-        by = (ROW - (0.46*cm if with_dates else 0.56*cm)) / 2
-        R(cv, LM+0.28*cm, ry+by, bx, 0.46*cm if with_dates else 0.56*cm, fill=NAVY, r=2)
-        if not with_dates:
-            T(cv,"GÜN", LM+0.28*cm+bx/2, ry+by+0.38*cm,"M-Bold",5.6,GOLD,"center")
-        T(cv, num, LM+0.28*cm+bx/2, ry+by+(0.14*cm if with_dates else 0.11*cm),
-          "M-Bold", 8 if with_dates else 10, GOLD, "center")
-        T(cv, dt, LM+0.28*cm+bx+0.3*cm, ry+ROW/2-0.13*cm,
-          "M-SemiBold", 10.5 if with_dates else 11, NAVY)
-        if tag:
-            tw = cv.stringWidth(tag,"M-Bold",7.5) + 0.5*cm
-            R(cv, RM-tw-0.25*cm, ry+ROW/2-0.2*cm, tw, 0.4*cm, fill=HexColor("#FBF0D6"), stroke=GOLD, r=3)
-            T(cv, tag, RM-tw/2-0.25*cm, ry+ROW/2-0.07*cm,"M-Bold",7.5,HexColor("#7A5A08"),"center")
-        cy -= ROW
+    # tam lacivert zemin + üstte soluk aurora dokusu
+    R(cv, 0, 0, W, H, fill=NAVY)
+    img_box(cv, f"{IMGS}/gallery/enson-aurora-orman.jpg", 0, H-9.5*cm, W, 9.5*cm, q=88, y_anchor=0.25)
+    cv.saveState(); cv.setFillColor(NAVY); cv.setFillAlpha(0.62)
+    cv.rect(0, H-9.5*cm, W, 9.5*cm, fill=1, stroke=0); cv.restoreState()
+    R(cv, 0, H-3*mm, W, 3*mm, fill=GOLD)
 
-    cy -= 0.5*cm
-    BOX = 2.15*cm
-    R(cv, LM, cy-BOX, CW, BOX, fill=NAVY, r=6)
-    R(cv, LM, cy-BOX, 5, BOX, fill=GOLD)
-    reklame(cv,"2.195 €", LM+0.55*cm, cy-0.28*cm, 25, rgba=(232,173,24,255), align="left")
-    T(cv,"kişi başı  ·  uçak hariç", LM+0.55*cm, cy-BOX+0.72*cm,"M-Light",8.5,HexColor("#a09080"))
-    T(cv,"Uçuşlar ~750 € (birlikte alıyoruz)" if with_dates
-         else "Kasım – Nisan arası düzenli gruplar", LM+0.55*cm, cy-BOX+0.34*cm,"M-Light",8.5,HexColor("#a09080"))
-    T(cv,"Yerini ayırmak için", RM-0.4*cm, cy-0.62*cm,"M-Light",9,HexColor("#a09080"),"right")
-    reklame(cv,"395 € ön ödeme", RM-0.4*cm, cy-0.95*cm, 15, rgba=(255,255,255,255), align="right")
-    T(cv,"Tek kişilik oda farkı: +400 €", RM-0.4*cm, cy-BOX+0.34*cm,"M-Light",8.5,HexColor("#a09080"),"right")
+    G = f"{IMGS}/gallery"
+    # üst köşe daireleri
+    img_circle(cv, f"{G}/aurora-1.jpg",              2.6*cm,  H-2.9*cm, 2.0*cm)
+    img_circle(cv, f"{G}/husky.jpg",                 W-2.6*cm, H-2.9*cm, 2.0*cm)
+
+    # başlık
+    reklame(cv, "Lost Voyages", W/2, H-1.0*cm, 13, rgba=(232,173,24,255))
+    reklame(cv, "Kuzey Işıkları", W/2, H-2.6*cm, 38, rgba=(255,255,255,255))
+    T(cv,"G E Z İ L E R İ", W/2, H-5.4*cm,"M-Bold",13,GOLD_A,"center")
+    T(cv,"Moskova  ·  Murmansk  ·  St. Petersburg", W/2, H-6.3*cm,"M-SemiBold",12,WHITE,"center")
+    T(cv,"7 Gece 8 Gün   ·   Maks. 15 Kişi", W/2, H-7.1*cm,"M-Regular",10.5,HexColor("#E8D898"),"center")
+
+    # yan daireler
+    img_circle(cv, f"{G}/enson-kizilmeydan-grup.jpg", 2.4*cm, H-10.6*cm, 1.9*cm)
+    img_circle(cv, f"{G}/ki-new-1.jpg",               2.3*cm, H-15.0*cm, 1.8*cm)
+    img_circle(cv, f"{G}/ki-new-4.jpg",               W-2.4*cm, H-10.6*cm, 1.9*cm)
+    img_circle(cv, f"{G}/ki-aurora-gol.jpg",          W-2.3*cm, H-15.0*cm, 1.8*cm)
+
+    # merkez kutu: tarihler veya program
+    bx1, bx2 = 4.9*cm, W-4.9*cm
+    bw = bx2 - bx1
+    if with_dates:
+        rows = [(n, d, tg) for n, d, tg in DATES]
+        rh = 0.62*cm
+        box_title = "Gezi Tarihleri"
+    else:
+        rows = [
+            ("1","Moskova — Varış & Otele Yerleşme", None),
+            ("2","Kızıl Meydan · GUM · Noel Pazarları", None),
+            ("3","Murmansk'a Uçuş & İlk Işık Avı", "AURORA"),
+            ("4","Husky Parkı & Lapland Macerası", None),
+            ("5","Alyosha · Buzkıran · Sami Köyü", "AURORA"),
+            ("6","Murmansk → St. Petersburg", None),
+            ("7","Hermitage · Kanallar · Keşif", None),
+            ("8","St. Petersburg → İstanbul", None),
+        ]
+        rh = 0.78*cm
+        box_title = "Gezi Programı"
+
+    bh_total = 1.45*cm + len(rows)*rh + 0.5*cm
+    btop = H - 8.0*cm
+    R(cv, bx1, btop-bh_total, bw, bh_total, fill=HexColor("#241F3D"), stroke=GOLD, r=10, sw=1.2)
+    reklame(cv, box_title, W/2, btop-0.25*cm, 15, rgba=(232,173,24,255))
+    yy = btop - 1.45*cm
+    for n, d, tg in rows:
+        T(cv, f"{n}.", bx1+0.55*cm, yy-0.32*cm,"M-Bold",9.5,GOLD_A)
+        T(cv, d, bx1+1.15*cm, yy-0.32*cm,"M-SemiBold",10,WHITE)
+        if tg:
+            tw2 = cv.stringWidth(tg,"M-Bold",6.8) + 0.4*cm
+            R(cv, bx2-tw2-0.4*cm, yy-0.44*cm, tw2, 0.36*cm, fill=HexColor("#3A3160"), stroke=GOLD_A, r=3, sw=0.6)
+            T(cv, tg, bx2-tw2/2-0.4*cm, yy-0.325*cm,"M-Bold",6.8,GOLD_A,"center")
+        yy -= rh
+
+    # alt bölge: büyük merkez aurora-grup + yan ve köşe daireleri
+    img_circle(cv, f"{G}/ki-aurora-grup.jpg",   W/2,      6.9*cm, 3.0*cm)
+    img_circle(cv, f"{G}/enson-geyik-grup.jpg", 3.7*cm,   7.7*cm, 2.2*cm)
+    img_circle(cv, f"{G}/ki-sami-selfie.jpg",   W-3.7*cm, 7.7*cm, 2.2*cm)
+    img_circle(cv, f"{G}/ki-kar-cift.jpg",      2.9*cm,   2.7*cm, 1.8*cm)
+    img_circle(cv, f"{G}/buz-yuzme.jpg",        W-2.9*cm, 2.7*cm, 1.8*cm)
+
+    T(cv,"lostvoyages.com   ·   @ahmeterenvci   ·   TÜRSAB 9113",
+      W/2, 0.55*cm,"M-Regular",8.5,HexColor("#c0b8a0"),"center")
+    cv.showPage()
 
     footer(cv); cv.showPage()
 
