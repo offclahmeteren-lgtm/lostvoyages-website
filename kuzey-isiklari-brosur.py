@@ -172,10 +172,10 @@ L(cv, LM+0.2*cm, cy, LM+LCW-0.2*cm, cy, BORDER, 0.6)
 cy -= 11
 
 T(cv,"Ön ödeme:", LM+0.2*cm, cy,"M-Regular",8,MUTED)
-T(cv,"395 €", LM+2.1*cm, cy,"M-SemiBold",9,NAVY)
+T(cv,"195 €", LM+2.1*cm, cy,"M-SemiBold",9,NAVY)
 cy -= 12
 
-T(cv,"kalan taksitlerle  ·  tek kişilik oda farkı +400 €",
+T(cv,"kalan aylık ödemelerle tamamlanır",
   LM+0.2*cm, cy,"M-Light",7.5,MUTED, max_w=LCW-0.3*cm)
 cy -= 10
 cy_left_end = cy
@@ -472,14 +472,15 @@ R(cv, LM, cy-BOX_H, 5, BOX_H, fill=GOLD)
 _, ph2 = reklame(cv,"2.195 €", LM+0.5*cm, cy-0.12*cm, 26,
                   rgba=(232,173,24,255), align="left")
 T(cv,"kişi başı · uçak hariç",  LM+0.5*cm, cy-BOX_H+0.28*cm,"M-Light",8,HexColor("#a09080"))
-T(cv,"Ön ödeme: 395 €  ·  kalan geziden 1 ay önce",
+T(cv,"Ön ödeme: 195 €  ·  kalan aylık ödemelerle",
   RM-0.3*cm, cy-0.55*cm,"M-SemiBold",9,WHITE,"right")
 T(cv,"Tek kişilik oda farkı: +400 €",
   RM-0.3*cm, cy-BOX_H+0.28*cm,"M-Light",8.5,HexColor("#a09080"),"right")
 cy -= BOX_H + 0.5*cm
 
-for item in ["60–30 gün kala yapılan iptallerde 100 € kesinti uygulanır.",
-             "30 günden az süre kala yapılan iptallerde kapora iade edilmez."]:
+for item in ["Gezi tarihinden 2 ay öncesine kadar yapılan iptallerde kesintisiz iade.",
+             "60–30 gün kala yapılan iptallerde 100 € kesinti uygulanır.",
+             "30 günden az süre kala yapılan iptallerde 395 € kesinti uygulanır."]:
     T(cv, f"— {item}", LM, cy,"M-Light",8,MUTED, max_w=CW)
     cy -= 13
 
